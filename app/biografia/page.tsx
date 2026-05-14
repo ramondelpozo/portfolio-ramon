@@ -1,35 +1,32 @@
-﻿export default function BiografiaPage() {
+﻿import Link from 'next/link';
+
+export default function BiografiaPage() {
   return (
-    <main className="min-h-screen bg-stone-50">
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
+    <main className="min-h-screen bg-stone-50 py-20">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-stone-900 mb-8 text-center">Sobre Mí</h1>
           
-          <div className="bg-white rounded-lg shadow-md p-8 md:p-12">
-            <div className="prose prose-lg max-w-none text-stone-700 space-y-6">
-              <p className="text-xl leading-relaxed">
-                Soy <strong>Ramón del Pozo Rott</strong>, escritor apasionado por los thrillers y la narrativa contemporánea. Mi trabajo explora los límites de la condición humana en un mundo cada vez más complejo.
+          <div className="bg-white p-8 md:p-12 rounded-lg shadow-sm border border-stone-200">
+            <div className="text-stone-700 space-y-6 leading-relaxed">
+              <p className="text-xl font-medium text-stone-900">
+                Hola, soy Ramón del Pozo Rott.
               </p>
-              
               <p>
-                Mis obras combinan la tensión del thriller con reflexiones profundas sobre la sociedad actual. Desde "Límite de Control" hasta "El Bosque que Calla", cada libro es una invitación a cuestionar lo que damos por sentado.
+                Soy escritor apasionado por el thriller y la narrativa contemporánea. Mis historias buscan explorar los límites de la realidad y la psicología humana.
               </p>
-              
               <p>
-                Cuando no estoy escribiendo, me dedico a explorar nuevas formas narrativas y a compartir mi experiencia con otros escritores a través de talleres y charlas.
+                A través de mis obras, invito a los lectores a cuestionar lo que creen saber y a descubrir las sombras que se esconden tras la cotidianidad.
               </p>
-              
-              <div className="mt-8 pt-8 border-t border-stone-200">
-                <h2 className="text-2xl font-bold text-stone-900 mb-4">Contacto</h2>
-                <p>
-                  ¿Quieres saber más sobre mis libros o colaborar en algún proyecto? 
-                  <a href="/contacto" className="text-amber-700 hover:underline ml-1">Escríbeme</a>.
-                </p>
-              </div>
+              <hr className="border-stone-200" />
+              <p>
+                ¿Quieres conocer más detalles o colaborar en un proyecto?
+                <Link href="/contacto" className="text-amber-700 font-bold hover:underline ml-1">Escríbeme aquí</Link>.
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </main>
   );
 }
