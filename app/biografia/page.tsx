@@ -31,7 +31,7 @@ export default function BiografiaPage() {
           <div className="bg-white rounded-2xl shadow-soft border border-stone-200 p-6 md:p-8">
             
             {/* Foto centrada */}
-            <div className="flex justify-center md:justify-end md:justify-start mb-6">
+            <div className="flex justify-center md:justify-end md:justify-end md:justify-start mb-6">
               <div className="relative w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-premium-gold/30 shadow-lg">
                 <Image
                   src="/autor/autor-oficina.png"
@@ -244,6 +244,7 @@ export default function BiografiaPage() {
     </main>
   );
 }
+
 
 
 
