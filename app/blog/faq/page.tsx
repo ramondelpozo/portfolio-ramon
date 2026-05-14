@@ -44,7 +44,7 @@ export default function FAQPage() {
                 className="w-full flex justify-between items-center p-6 text-left font-medium text-stone-900 hover:bg-stone-50 transition focus:outline-none"
               >
                 <span>{item.q}</span>
-                <span className={	ext-2xl text-amber-600 transition-transform duration-300 }>
+                <span className={`text-2xl text-amber-600 transition-transform duration-300 ${openIndex === index ? 'rotate-45' : ''}`}>
                   +
                 </span>
               </button>
