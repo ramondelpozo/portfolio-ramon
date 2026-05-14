@@ -39,7 +39,7 @@ export default function InmunidadDiplomaticaPage() {
           <div className="flex justify-center mb-12">
             <div className="relative w-56 md:w-72 aspect-[2/3] rounded-lg overflow-hidden shadow-premium border-2 border-premium-gold/20">
               <Image
-                src="/libros/3.jpg"
+                src="/libros/inmunidad-diplomatica.jpg"
                 alt="Portada de Inmunidad Diplomática - novela de thriller político y corrupción internacional"
                 fill
                 className="object-cover"
@@ -138,3 +138,4 @@ export default function InmunidadDiplomaticaPage() {
     </main>
   );
 }
+

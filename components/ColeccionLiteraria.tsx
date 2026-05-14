@@ -14,7 +14,7 @@ interface Book {
 
 const CL_BOOKS: Book[] = [
   {
-    img: "/libros/portada.png",
+    img: "/libros/sekou-raices-de-libertad.png",
     badge: "Estreno · Próximamente 2026",
     title: "Sekou Raíces de Libertad",
     sub: "Próxima publicación",
@@ -23,7 +23,7 @@ const CL_BOOKS: Book[] = [
     amazon: ""
   },
   {
-    img: "/libros/Portada-final.png",
+    img: "/libros/el-bosque-que-calla.png",
     badge: "Estreno · Próximamente 2026",
     title: "El Bosque que Calla",
     sub: "La verdad que nadie podía decir",
@@ -32,7 +32,7 @@ const CL_BOOKS: Book[] = [
     amazon: ""
   },
   {
-    img: "/libros/Portada.jpg",
+    img: "/libros/limite-de-control.webp",
     badge: "Disponible ahora",
     title: "Límite de Control",
     sub: "Hasta dónde puedes ayudar antes de que alguien decida por ti",
@@ -41,7 +41,7 @@ const CL_BOOKS: Book[] = [
     amazon: "https://www.amazon.es/L%C3%ADmite-Control-Hasta-ayudar-decidir/dp/B0GW895LSQ"
   },
   {
-    img: "/libros/Portada-3.png",
+    img: "/libros/ojos-de-lobo.png",
     badge: "Disponible ahora",
     title: "Ojos de Lobo",
     sub: "Entre sombras y traición",
@@ -50,7 +50,7 @@ const CL_BOOKS: Book[] = [
     amazon: "https://www.amazon.es/OJOS-LOBO-Entre-Sombras-Traici%C3%B3n/dp/B0G52NVBVF"
   },
   {
-    img: "/libros/Portada-2.png",
+    img: "/libros/la-cuidadora.webp",
     badge: "Disponible ahora",
     title: "La Cuidadora",
     sub: "Recuerda que su nombre pronto será tuyo",
@@ -573,3 +573,4 @@ export default function ColeccionLiteraria() {
     </>
   );
 }
+

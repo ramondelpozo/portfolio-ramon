@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -13,7 +13,7 @@ const BOOKS_BY_SECTION = [
     books: [
       {
         id: "bosque",
-        img: "/libros/Portada-final.png",
+        img: "/libros/el-bosque-que-calla.png",
         badge: "Thriller histórico",
         title: "EL BOSQUE QUE CALLA",
         sub: "La verdad que nadie podía decir",
@@ -30,7 +30,7 @@ const BOOKS_BY_SECTION = [
     books: [
       {
         id: "limite",
-        img: "/libros/Portada.jpg",
+        img: "/libros/limite-de-control.webp",
         badge: "Thriller tecnológico",
         title: "LÍMITE DE CONTROL",
         sub: "Hasta dónde ayudar sin decidir",
@@ -45,12 +45,12 @@ const BOOKS_BY_SECTION = [
     num: "03",
     title: "Thriller y suspense",
     books: [
-      { id: "ojos", img: "/libros/Portada-3.png", badge: "Thriller psicológico", title: "OJOS DE LOBO", sub: "Entre sombras y traición", desc: "Un accidente en Osaka. Una mentira enterrada. Cuando Lena descubre que sus padres fueron asesinados, se convierte en el siguiente objetivo.", amazon: "https://www.amazon.es/OJOS-LOBO-Entre-Sombras-Traici%C3%B3n/dp/B0G52NVBVF", prox: false },
-      { id: "cuidadora", img: "/libros/Portada-2-1.webp", badge: "Thriller gótico", title: "LA CUIDADORA", sub: "Recuerda su nombre… o será el tuyo", desc: "Una mansión aislada en los Picos de Europa. Claudia acepta el trabajo buscando empezar de nuevo. Lo que encuentra es algo muy distinto.", amazon: "https://www.amazon.es/cuidadora-Recuerda-nombre-ser%C3%A1-tuyo/dp/B0FTVF3RM1", prox: false },
-      { id: "infiltrada", img: "/libros/Portada.png", badge: "Thriller conspirativo", title: "LA MUJER INFILTRADA", sub: "Nadie sabe quién la controla", desc: "Una mentira. Una misión. Un juego donde confiar es morir. Claudia descubre que ha sido elegida para algo mucho más peligroso.", amazon: "https://www.amazon.es/mujer-Infiltrada-Nadie-qui%C3%A9n-controla/dp/B0FPLJNYJ5", prox: false },
-      { id: "limpiador", img: "/libros/El-Limpiador.jpg", badge: "Thriller oscuro", title: "EL LIMPIADOR", sub: "Lo que un hombre oculta", desc: "Jack es invisible: padre distante, marido ausente. Hasta que alguien entra en su casa y deja un mensaje. No fue un robo. Fue un error.", amazon: "https://www.amazon.es/CLEANER-EL-LIMPIADOR-Hombre-Oculta/dp/B0FKYH81JG", prox: false },
+      { id: "ojos", img: "/libros/ojos-de-lobo.png", badge: "Thriller psicológico", title: "OJOS DE LOBO", sub: "Entre sombras y traición", desc: "Un accidente en Osaka. Una mentira enterrada. Cuando Lena descubre que sus padres fueron asesinados, se convierte en el siguiente objetivo.", amazon: "https://www.amazon.es/OJOS-LOBO-Entre-Sombras-Traici%C3%B3n/dp/B0G52NVBVF", prox: false },
+      { id: "cuidadora", img: "/libros/la-cuidadora.webp", badge: "Thriller gótico", title: "LA CUIDADORA", sub: "Recuerda su nombre… o será el tuyo", desc: "Una mansión aislada en los Picos de Europa. Claudia acepta el trabajo buscando empezar de nuevo. Lo que encuentra es algo muy distinto.", amazon: "https://www.amazon.es/cuidadora-Recuerda-nombre-ser%C3%A1-tuyo/dp/B0FTVF3RM1", prox: false },
+      { id: "infiltrada", img: "/libros/la-mujer-infiltrada.png", badge: "Thriller conspirativo", title: "LA MUJER INFILTRADA", sub: "Nadie sabe quién la controla", desc: "Una mentira. Una misión. Un juego donde confiar es morir. Claudia descubre que ha sido elegida para algo mucho más peligroso.", amazon: "https://www.amazon.es/mujer-Infiltrada-Nadie-qui%C3%A9n-controla/dp/B0FPLJNYJ5", prox: false },
+      { id: "limpiador", img: "/libros/el-limpiador.jpg", badge: "Thriller oscuro", title: "EL LIMPIADOR", sub: "Lo que un hombre oculta", desc: "Jack es invisible: padre distante, marido ausente. Hasta que alguien entra en su casa y deja un mensaje. No fue un robo. Fue un error.", amazon: "https://www.amazon.es/CLEANER-EL-LIMPIADOR-Hombre-Oculta/dp/B0FKYH81JG", prox: false },
       { id: "refugio", img: "/libros/El-ultimo-refugio.jpg", badge: "Thriller survival", title: "EL ÚLTIMO REFUGIO", sub: "Un refugio oculto. Un pasado oscuro. Un enemigo silencioso", desc: "Gabriel Orta, exmilitar, se esconde en una cabaña perdida en la montaña. Cuando Celia llega herida, su aislamiento termina para siempre.", amazon: "https://www.amazon.es/El-%C3%BAltimo-refugio-oculto-silencioso/dp/B0FJ57N3MB", prox: false },
-      { id: "marea", img: "/libros/portada.png", badge: "Thriller psicológico", title: "LA MAREA NO OLVIDA", sub: "Una isla. Un secreto. Ninguna salida", desc: "Elena huye de su pasado… pero en esa isla remota descubre que no se puede escapar de todo. Alguien los ha reunido por una razón.", amazon: "https://www.amazon.es/Marea-No-Olvida-secreto-Ninguna/dp/B0FGW6DCJ7", prox: false }
+      { id: "marea", img: "/libros/la-marea-no-olvida.jpg", badge: "Thriller psicológico", title: "LA MAREA NO OLVIDA", sub: "Una isla. Un secreto. Ninguna salida", desc: "Elena huye de su pasado… pero en esa isla remota descubre que no se puede escapar de todo. Alguien los ha reunido por una razón.", amazon: "https://www.amazon.es/Marea-No-Olvida-secreto-Ninguna/dp/B0FGW6DCJ7", prox: false }
     ]
   },
   {
@@ -58,13 +58,13 @@ const BOOKS_BY_SECTION = [
     num: "04",
     title: "Novela social y denuncia",
     books: [
-      { id: "millones", img: "/libros/Portada-1-1.png", badge: "Ensayo político", title: "100.000 MILLONES PERDIDOS", sub: "La historia de cómo España malgastó tu futuro", desc: "Entre 2018 y 2025, España perdió 100.000 millones. No fue un error: fue burocracia, ineficiencia y corrupción que hipotecaron una generación.", amazon: "https://www.amazon.es/100-000-MILLONES-PERDIDOS-Historia-Malgast%C3%B3/dp/B0FWRL8ZJX", prox: false },
-      { id: "bajo", img: "/libros/Portada-3.webp", badge: "Denuncia social", title: "BAJO EL CIELO", sub: "El problema de los sin hogar", desc: "Revela la verdad sobre el sinhogarismo: no es una elección, sino el resultado de un sistema que falla. Con testimonios reales y soluciones concretas.", amazon: "https://www.amazon.es/Bajo-Cielo-Problema-los-hogar/dp/B0FG27KYXF", prox: false },
-      { id: "tiempo", img: "/libros/1.jpg", badge: "Denuncia social", title: "TIEMPO DE RESPETAR", sub: "La dignidad como derecho en la vejez", desc: "Denuncia el abandono y la discriminación hacia las personas mayores. Un llamado a la empatía y a la acción.", amazon: "https://www.amazon.es/TIEMPO-RESPETAR-DIGNIDAD-Reivindicaciones-urgentes/dp/B0FD712ZST", prox: false },
-      { id: "tierra", img: "/libros/2.jpg", badge: "Denuncia social", title: "TIERRA HERÍDA", sub: "Cuando la naturaleza golpea y el sistema falla", desc: "Terremotos, incendios, inundaciones. Historias de quienes perdieron todo y de un sistema que a veces abandona en lugar de proteger.", amazon: "https://www.amazon.es/Tierra-Herida-Cuando-Naturaleza-Sistema/dp/B0F3C7QL8F", prox: false },
-      { id: "inmunidad", img: "/libros/3.jpg", badge: "Testimonio", title: "INMUNIDAD DIPLOMÁTICA", sub: "¿Límite o licencia para el abuso?", desc: "Veinticinco años en el mundo diplomático enfrentando acoso, discriminación y un despido injusto. Un grito de justicia e igualdad.", amazon: "https://www.amazon.es/Inmunidad-diplom%C3%A1tica-Ram%C3%B3n-pozo-Rott/dp/B0DTJ2D2QF", prox: false },
-      { id: "mascotas", img: "/libros/4.jpg", badge: "Bienestar animal", title: "MASCOTAS EN EL OLVIDO", sub: "Por el bienestar animal", desc: "Un homenaje al amor incondicional con nuestras mascotas y una llamada de atención sobre el abandono y la irresponsabilidad.", amazon: "https://www.amazon.es/Mascotas-olvido-RAM%C3%93N-POZO-ROTT/dp/8410975378", prox: false },
-      { id: "vende", img: "/libros/1-1.jpg", badge: "Denuncia social", title: "SE VENDE", sub: "Derecho a una vivienda", desc: "Analiza la crisis habitacional, los precios inasequibles y los desahucios. Un llamado a exigir soluciones que pongan a las personas primero.", amazon: "https://www.amazon.es/SE-VENDE-Derecho-Vivienda-Pol%C3%ADticas/dp/B0DP37DJW1", prox: false }
+      { id: "millones", img: "/libros/millones-perdidos.png", badge: "Ensayo político", title: "100.000 MILLONES PERDIDOS", sub: "La historia de cómo España malgastó tu futuro", desc: "Entre 2018 y 2025, España perdió 100.000 millones. No fue un error: fue burocracia, ineficiencia y corrupción que hipotecaron una generación.", amazon: "https://www.amazon.es/100-000-MILLONES-PERDIDOS-Historia-Malgast%C3%B3/dp/B0FWRL8ZJX", prox: false },
+      { id: "bajo", img: "/libros/bajo-el-cielo.webp", badge: "Denuncia social", title: "BAJO EL CIELO", sub: "El problema de los sin hogar", desc: "Revela la verdad sobre el sinhogarismo: no es una elección, sino el resultado de un sistema que falla. Con testimonios reales y soluciones concretas.", amazon: "https://www.amazon.es/Bajo-Cielo-Problema-los-hogar/dp/B0FG27KYXF", prox: false },
+      { id: "tiempo", img: "/libros/tiempo-de-respetar.jpg", badge: "Denuncia social", title: "TIEMPO DE RESPETAR", sub: "La dignidad como derecho en la vejez", desc: "Denuncia el abandono y la discriminación hacia las personas mayores. Un llamado a la empatía y a la acción.", amazon: "https://www.amazon.es/TIEMPO-RESPETAR-DIGNIDAD-Reivindicaciones-urgentes/dp/B0FD712ZST", prox: false },
+      { id: "tierra", img: "/libros/tierra-herida.jpg", badge: "Denuncia social", title: "TIERRA HERÍDA", sub: "Cuando la naturaleza golpea y el sistema falla", desc: "Terremotos, incendios, inundaciones. Historias de quienes perdieron todo y de un sistema que a veces abandona en lugar de proteger.", amazon: "https://www.amazon.es/Tierra-Herida-Cuando-Naturaleza-Sistema/dp/B0F3C7QL8F", prox: false },
+      { id: "inmunidad", img: "/libros/inmunidad-diplomatica.jpg", badge: "Testimonio", title: "INMUNIDAD DIPLOMÁTICA", sub: "¿Límite o licencia para el abuso?", desc: "Veinticinco años en el mundo diplomático enfrentando acoso, discriminación y un despido injusto. Un grito de justicia e igualdad.", amazon: "https://www.amazon.es/Inmunidad-diplom%C3%A1tica-Ram%C3%B3n-pozo-Rott/dp/B0DTJ2D2QF", prox: false },
+      { id: "mascotas", img: "/libros/mascotas-en-el-olvido.jpg", badge: "Bienestar animal", title: "MASCOTAS EN EL OLVIDO", sub: "Por el bienestar animal", desc: "Un homenaje al amor incondicional con nuestras mascotas y una llamada de atención sobre el abandono y la irresponsabilidad.", amazon: "https://www.amazon.es/Mascotas-olvido-RAM%C3%93N-POZO-ROTT/dp/8410975378", prox: false },
+      { id: "vende", img: "/libros/se-vende-derecho-vivienda.jpg", badge: "Denuncia social", title: "SE VENDE", sub: "Derecho a una vivienda", desc: "Analiza la crisis habitacional, los precios inasequibles y los desahucios. Un llamado a exigir soluciones que pongan a las personas primero.", amazon: "https://www.amazon.es/SE-VENDE-Derecho-Vivienda-Pol%C3%ADticas/dp/B0DP37DJW1", prox: false }
     ]
   },
   {
@@ -72,9 +72,9 @@ const BOOKS_BY_SECTION = [
     num: "05",
     title: "Drama y superación",
     books: [
-      { id: "invierno", img: "/libros/portada-1.png", badge: "Drama", title: "EL INVIERNO QUE NOS UNIÓ", sub: "Cuando la adversidad fortalece los lazos humanos", desc: "Una madre desesperada. Su hijo enfermo. 48 horas para salvarlo. Atrapados en una tormenta, una historia de solidaridad y coraje.", amazon: "https://www.amazon.es/invierno-que-nos-uni%C3%B3-adversidad/dp/B0FMNNYVQT", prox: false },
-      { id: "rostros", img: "/libros/2-1.jpg", badge: "Drama", title: "ROSTROS DE CRISTALES", sub: "Identidad, aceptación y la fuerza de ser uno mismo", desc: "Martín lucha por encontrar su lugar en un mundo lleno de prejuicios. Una historia sobre autodescubrimiento y autenticidad.", amazon: "https://www.amazon.es/Rostros-Cristales-Ram%C3%B3n-Pozo-Rott/dp/B0DRDJHR6S", prox: false },
-      { id: "huellas", img: "/libros/3-1.jpg", badge: "Superación", title: "TRAS LAS HUELLAS DEL PASADO", sub: "Desafíos y decisiones en la búsqueda de un nuevo destino", desc: "Un joven marcado por la pérdida, la adicción y los desafíos de crecer entre dos culturas. Una historia inspiradora de resiliencia y esperanza.", amazon: "https://www.amazon.es/TRAS-LAS-HUELAS-DEL-PASADO/dp/B0DLGSCG8X", prox: false }
+      { id: "invierno", img: "/libros/el-invierno-que-nos-unio.png", badge: "Drama", title: "EL INVIERNO QUE NOS UNIÓ", sub: "Cuando la adversidad fortalece los lazos humanos", desc: "Una madre desesperada. Su hijo enfermo. 48 horas para salvarlo. Atrapados en una tormenta, una historia de solidaridad y coraje.", amazon: "https://www.amazon.es/invierno-que-nos-uni%C3%B3-adversidad/dp/B0FMNNYVQT", prox: false },
+      { id: "rostros", img: "/libros/rostros-de-cristales.jpg", badge: "Drama", title: "ROSTROS DE CRISTALES", sub: "Identidad, aceptación y la fuerza de ser uno mismo", desc: "Martín lucha por encontrar su lugar en un mundo lleno de prejuicios. Una historia sobre autodescubrimiento y autenticidad.", amazon: "https://www.amazon.es/Rostros-Cristales-Ram%C3%B3n-Pozo-Rott/dp/B0DRDJHR6S", prox: false },
+      { id: "huellas", img: "/libros/tras-las-huellas-del-pasado.jpg", badge: "Superación", title: "TRAS LAS HUELLAS DEL PASADO", sub: "Desafíos y decisiones en la búsqueda de un nuevo destino", desc: "Un joven marcado por la pérdida, la adicción y los desafíos de crecer entre dos culturas. Una historia inspiradora de resiliencia y esperanza.", amazon: "https://www.amazon.es/TRAS-LAS-HUELAS-DEL-PASADO/dp/B0DLGSCG8X", prox: false }
     ]
   }
 ];
