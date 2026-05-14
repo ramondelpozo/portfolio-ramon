@@ -2,10 +2,10 @@
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -29,9 +29,6 @@ const config: Config = {
         "float-slow": "float 8s ease-in-out infinite",
         "float-medium": "float 6s ease-in-out infinite",
         "fade-in-up": "fadeInUp 0.8s ease-out forwards",
-        "fade-in": "fadeIn 1s ease-out forwards",
-        "shine": "shine 2s ease-in-out infinite",
-        "pulse-soft": "pulseSoft 3s ease-in-out infinite",
       },
       keyframes: {
         float: {
@@ -42,23 +39,6 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(24px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        shine: {
-          "0%": { backgroundPosition: "-200% center" },
-          "100%": { backgroundPosition: "200% center" },
-        },
-        pulseSoft: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.85" },
-        },
-      },
-      backgroundImage: {
-        "gradient-premium": "linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2420 100%)",
-        "gradient-warm": "linear-gradient(135deg, #f5f0e6 0%, #fffef9 50%, #e8e0d5 100%)",
-        "gradient-gold": "linear-gradient(90deg, transparent, rgba(201,169,97,0.3), transparent)",
       },
     },
   },

@@ -1,102 +1,169 @@
-﻿import Link from 'next/link';
+﻿import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Biografía | Ramón del Pozo Rott - Escritor y Conductor Profesional",
+  description: "Conoce la trayectoria de Ramón del Pozo Rott: escritor de narrativa contemporánea, conductor profesional y creador de contenido multimedia.",
+  keywords: ["biografía", "Ramón del Pozo Rott", "escritor", "conductor profesional", "autor español"],
+};
 
 export default function BiografiaPage() {
-  const obras = [
-    { titulo: "Inmunidad diplomática", tema: "Abusos de poder y corrupción en entornos diplomáticos. Una denuncia de la impunidad." },
-    { titulo: "La mujer infiltrada", tema: "Intriga, secretos y la búsqueda de la justicia en un mundo de engaños." },
-    { titulo: "Tierra Herida", tema: "El impacto devastador de los fallos del sistema ante desastres naturales." },
-    { titulo: "SE VENDE: Derecho a una Vivienda", tema: "Denuncia sobre la especulación inmobiliaria y el derecho a un hogar digno." },
-    { titulo: "Tras las huellas del pasado", tema: "Reflexión íntima sobre memoria, culpa y segundas oportunidades." },
-    { titulo: "Mascotas en el Olvido", tema: "Bienestar animal y responsabilidad social hacia los seres que dependen de nosotros." }
-  ];
-
   return (
-    <main className="min-h-screen bg-stone-50">
-      {/* HERO BIOGRAFÍA */}
-      <section className="py-20 bg-stone-900 text-white text-center px-4">
-        <h1 className="text-4xl md:text-6xl font-bold mb-2">Ramón del Pozo Rott</h1>
-        <p className="text-xl text-amber-400 font-medium uppercase tracking-widest mb-6">ESCRITOR • CONDUCTOR PROFESIONAL • CREADOR DE CONTENIDOS</p>
-        <p className="text-stone-300 max-w-2xl mx-auto mb-8">Una Trayectoria Marcada por la Autenticidad</p>
-        <Link href="/libros" className="inline-block px-8 py-3 bg-amber-600 text-white rounded hover:bg-amber-700 transition font-medium">
-          Explorar mis obras
-        </Link>
-      </section>
-
-      {/* INTRODUCCIÓN */}
-      <section className="py-16 container mx-auto px-4 max-w-4xl">
-        <div className="bg-white p-8 md:p-12 rounded-lg shadow-sm border border-stone-200">
-          <p className="text-lg text-stone-700 leading-relaxed mb-6">
-            Nacido en Frankfurt, Alemania, soy un profesional polifacético que ha sabido integrar mi experiencia en la carretera con una profunda vocación literaria y artística. Domino el español y el alemán como lenguas maternas, una dualidad que enriquece mi visión del mundo.
-          </p>
-          <p className="text-stone-600 leading-relaxed">
-            Mi vida ha sido un constante aprendizaje entre culturas, idiomas y realidades que me han moldeado como persona y como creador.
+    <main className="min-h-screen bg-premium-cream">
+      
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-premium-charcoal to-stone-800 text-white py-12 px-4">
+        <div className="container-premium max-w-4xl mx-auto text-center">
+          <span className="badge-premium mb-3 inline-block">Sobre el Autor</span>
+          <h1 className="font-serif text-3xl md:text-4xl font-bold">
+            Ramón del Pozo Rott
+          </h1>
+          <p className="text-stone-300 mt-2 text-sm md:text-base">
+            Escritor • Conductor Profesional • Creador de Contenidos
           </p>
         </div>
       </section>
 
-      {/* CONDUCTOR PROFESIONAL */}
-      <section className="py-16 bg-white border-t border-stone-200">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl font-bold text-stone-900 mb-6">El Camino de un Conductor de Primera</h2>
-          <p className="text-stone-700 leading-relaxed mb-8">
-            Con una sólida carrera como conductor profesional, he recorrido miles de kilómetros a través de diferentes paisajes y realidades. Esta faceta no es solo un oficio, sino una fuente de inspiración constante que me ha brindado una perspectiva única sobre la sociedad, la responsabilidad y la precisión en cada acción.
-          </p>
-          <p className="text-stone-600 mb-8 italic">
-            La conducción profesional me enseñó el valor de la disciplina, la atención al detalle y el respeto por quienes confían en tu experiencia. Estas lecciones han sido fundamentales en todas mis otras facetas.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-stone-50 p-6 rounded-lg border border-stone-200">
-              <h3 className="font-bold text-stone-900 mb-2">🚛 Conducción Profesional</h3>
-              <p className="text-stone-600 text-sm">Experiencia al Volante</p>
-              <p className="text-stone-700 text-sm mt-2">Años de trayectoria garantizando seguridad, eficiencia y profesionalismo en cada trayecto.</p>
+      {/* Introducción con foto - CENTRADA */}
+      <section className="py-10 px-4">
+        <div className="container-premium max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-soft border border-stone-200 p-6 md:p-8">
+            
+            {/* Foto centrada */}
+            <div className="flex justify-center mb-6">
+              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-premium-gold/30 shadow-lg">
+                <Image
+                  src="/autor/autor.png"
+                  alt="Ramón del Pozo Rott - Escritor"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
-            <div className="bg-stone-50 p-6 rounded-lg border border-stone-200">
-              <h3 className="font-bold text-stone-900 mb-2">✍️ Espacio de Escritura</h3>
-              <p className="text-stone-600 text-sm">De la Carretera a la Pluma</p>
-              <p className="text-stone-700 text-sm mt-2">Cómo las vivencias diarias se transforman en relatos con alma, propósito y denuncia social.</p>
+
+            {/* Texto centrado */}
+            <div className="text-center max-w-3xl mx-auto">
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-premium-charcoal mb-4">
+                Una Trayectoria Marcada por la Autenticidad
+              </h2>
+              <div className="text-stone-700 space-y-3 text-sm md:text-base">
+                <p>
+                  Nacido en <span className="font-semibold text-premium-gold">Frankfurt, Alemania</span>, soy un profesional polifacético que ha sabido integrar mi experiencia en la carretera con una profunda vocación literaria y artística. Domino el español y el alemán como lenguas maternas, una dualidad que enriquece mi visión del mundo.
+                </p>
+                <p>
+                  Mi vida ha sido un constante aprendizaje entre culturas, idiomas y realidades que me han moldeado como persona y como creador.
+                </p>
+              </div>
+              <div className="mt-6">
+                <Link href="/libros" className="inline-flex items-center gap-2 px-6 py-3 bg-premium-gold text-premium-black font-medium rounded-full hover:bg-premium-goldLight transition-all">
+                  Explorar mis obras
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* GIRO LITERARIO */}
-      <section className="py-16 bg-stone-50 border-t border-stone-200">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl font-bold text-stone-900 mb-6">El Giro Hacia la Literatura de Denuncia</h2>
-          <p className="text-stone-700 leading-relaxed mb-6">
-            Mi vida dio un giro profundo al enfrentar situaciones laborales que me llevaron a cuestionar valores esenciales como la justicia, el respeto y la dignidad. Estas experiencias me marcaron de manera indeleble y me impulsaron a escribir.
+      {/* Conductor Profesional - CON IMÁGENES */}
+      <section className="py-8 px-4 bg-white">
+        <div className="container-premium max-w-4xl mx-auto">
+          <h3 className="font-serif text-2xl font-bold text-premium-charcoal mb-4">
+            El Camino de un Conductor de Primera
+          </h3>
+          <p className="text-stone-700 mb-4 text-sm md:text-base leading-relaxed">
+            Con una sólida carrera como <span className="font-semibold text-premium-gold">conductor profesional</span>, he recorrido miles de kilómetros a través de diferentes paisajes y realidades. Esta faceta no es solo un oficio, sino una fuente de inspiración constante que me ha brindado una perspectiva única sobre la sociedad, la responsabilidad y la precisión en cada acción.
           </p>
-          <p className="text-stone-700 leading-relaxed mb-6">
-            Mi obra debut, <strong className="text-stone-900">Inmunidad diplomática</strong> (publicada en alemán como <em>Diplomatische Immunität</em>), es un testimonio valiente sobre los abusos de poder en entornos privilegiados. A través de esta novela, busco dar voz a quienes han sido silenciados por el sistema, a quienes han vivido realidades similares de injusticia y desprecio.
+          <p className="text-stone-600 mb-6 text-sm md:text-base leading-relaxed">
+            La conducción profesional me enseñó el valor de la disciplina, la atención al detalle y el respeto por quienes confían en tu experiencia. Estas lecciones han sido fundamentales en todas mis otras facetas.
           </p>
-          <p className="text-stone-600 leading-relaxed">
+
+          {/* Cards con imágenes */}
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-stone-50 rounded-xl border border-stone-200 overflow-hidden">
+              <div className="relative h-40 bg-stone-200">
+                <Image
+                  src="/publicidad/conductor_profesional.png"
+                  alt="Conducción Profesional"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h4 className="font-bold text-premium-charcoal mb-2 text-base">🚛 Conducción Profesional</h4>
+                <p className="text-stone-600 text-sm">Años de trayectoria garantizando seguridad, eficiencia y profesionalismo en cada trayecto.</p>
+              </div>
+            </div>
+            <div className="bg-stone-50 rounded-xl border border-stone-200 overflow-hidden">
+              <div className="relative h-40 bg-stone-200">
+                <Image
+                  src="/publicidad/escritor_espacio.png"
+                  alt="Espacio de Escritura"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h4 className="font-bold text-premium-charcoal mb-2 text-base">✍️ Espacio de Escritura</h4>
+                <p className="text-stone-600 text-sm">Cómo las vivencias diarias se transforman en relatos con alma, propósito y denuncia social.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Giro Literario */}
+      <section className="py-8 px-4 bg-stone-50">
+        <div className="container-premium max-w-4xl mx-auto">
+          <h3 className="font-serif text-2xl font-bold text-premium-charcoal mb-4">
+            El Giro Hacia la Literatura de Denuncia
+          </h3>
+          <p className="text-stone-700 mb-3 text-sm md:text-base leading-relaxed">
+            Mi vida dio un giro profundo al enfrentar situaciones laborales que me llevaron a cuestionar valores esenciales como la <span className="font-semibold text-premium-gold">justicia, el respeto y la dignidad</span>. Estas experiencias me marcaron de manera indeleble y me impulsaron a escribir.
+          </p>
+          <p className="text-stone-700 mb-3 text-sm md:text-base leading-relaxed">
+            Mi obra debut, <em className="font-semibold">Inmunidad diplomática</em> (publicada en alemán como <em>Diplomatische Immunität</em>), es un testimonio valiente sobre los abusos de poder en entornos privilegiados.
+          </p>
+          <p className="text-stone-600 text-sm md:text-base leading-relaxed">
             Esta obra es solo una entre varias que he escrito, muchas de ellas centradas en la defensa de derechos y la denuncia de injusticias. Mi producción literaria refleja mi compromiso con los temas sociales, políticos y medioambientales, siempre desde una perspectiva humana y cercana.
           </p>
         </div>
       </section>
 
-      {/* TABLA DE OBRAS */}
-      <section className="py-16 bg-white border-t border-stone-200">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl font-bold text-stone-900 mb-2 text-center">Mis Obras: Compromiso Literario</h2>
-          <p className="text-stone-600 text-center mb-10 max-w-2xl mx-auto">
-            Cada libro que escribo es una invitación a reflexionar sobre las realidades que nos rodean. Son historias que no solo entretienen, sino que generan conciencia y provocan un diálogo necesario sobre la justicia, la dignidad y la transformación social.
+      {/* Tabla de Obras */}
+      <section className="py-8 px-4 bg-white">
+        <div className="container-premium max-w-4xl mx-auto">
+          <h3 className="font-serif text-2xl font-bold text-premium-charcoal mb-4 text-center">
+            Mis Obras: Compromiso Literario
+          </h3>
+          <p className="text-stone-600 text-center mb-6 text-sm max-w-3xl mx-auto">
+            Cada libro que escribo es una invitación a reflexionar sobre las realidades que nos rodean.
           </p>
 
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-stone-100">
-                  <th className="text-left p-4 font-bold text-stone-900 border-b border-stone-200">Obra Destacada</th>
-                  <th className="text-left p-4 font-bold text-stone-900 border-b border-stone-200">Temática Principal</th>
+          <div className="overflow-x-auto rounded-lg border border-stone-200">
+            <table className="w-full text-sm">
+              <thead className="bg-stone-100">
+                <tr>
+                  <th className="text-left p-3 font-bold text-premium-charcoal">Obra Destacada</th>
+                  <th className="text-left p-3 font-bold text-premium-charcoal hidden md:table-cell">Temática Principal</th>
                 </tr>
               </thead>
               <tbody>
-                {obras.map((obra, i) => (
-                  <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-stone-50'}>
-                    <td className="p-4 border-b border-stone-200 font-medium text-stone-900">{obra.titulo}</td>
-                    <td className="p-4 border-b border-stone-200 text-stone-600">{obra.tema}</td>
+                {[
+                  { title: "Inmunidad diplomática", theme: "Abusos de poder y corrupción en entornos diplomáticos" },
+                  { title: "La mujer infiltrada", theme: "Intriga, secretos y búsqueda de justicia" },
+                  { title: "Tierra Herida", theme: "Impacto de fallos del sistema ante desastres naturales" },
+                  { title: "SE VENDE: Derecho a una Vivienda", theme: "Especulación inmobiliaria y derecho a un hogar" },
+                  { title: "Tras las huellas del pasado", theme: "Memoria, culpa y segundas oportunidades" },
+                  { title: "Mascotas en el Olvido", theme: "Bienestar animal y responsabilidad social" }
+                ].map((book, i) => (
+                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-stone-50"}>
+                    <td className="p-3 border-t border-stone-200 font-semibold text-premium-charcoal text-sm">{book.title}</td>
+                    <td className="p-3 border-t border-stone-200 text-stone-600 text-sm hidden md:table-cell">{book.theme}</td>
                   </tr>
                 ))}
               </tbody>
@@ -105,50 +172,75 @@ export default function BiografiaPage() {
         </div>
       </section>
 
-      {/* MULTIMEDIA */}
-      <section className="py-16 bg-stone-50 border-t border-stone-200">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl font-bold text-stone-900 mb-6 text-center">Creador Multimedia: Nuevas Formas de Comunicar</h2>
-          <p className="text-stone-700 leading-relaxed mb-8 text-center">
-            Ramón no se limita a las palabras. Su creatividad se expande hacia lo visual y lo musical, buscando nuevas formas de conectar con el público y transmitir mensajes que inspiren una transformación social. Creo contenido visual y musical que complementa mi obra escrita.
+      {/* Multimedia - CON IMÁGENES */}
+      <section className="py-8 px-4 bg-stone-50">
+        <div className="container-premium max-w-4xl mx-auto">
+          <h3 className="font-serif text-2xl font-bold text-premium-charcoal mb-4 text-center">
+            Creador Multimedia
+          </h3>
+          <p className="text-stone-700 mb-6 text-center text-sm max-w-3xl mx-auto">
+            Mi creatividad se expande hacia lo visual y lo musical, buscando nuevas formas de conectar con el público.
           </p>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
-              <h3 className="font-bold text-stone-900 mb-2">🎬 Creación Multimedia</h3>
-              <p className="text-stone-600 text-sm">Contenido Audiovisual</p>
-              <p className="text-stone-700 text-sm mt-2">Producciones que complementan la narrativa de mis libros y amplían el alcance del mensaje.</p>
+          
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-white rounded-xl border border-stone-200 overflow-hidden">
+              <div className="relative h-40 bg-stone-200">
+                <Image
+                  src="/publicidad/creador_multimedia.png"
+                  alt="Contenido Audiovisual"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h4 className="font-bold text-premium-charcoal mb-2 text-base">🎬 Contenido Audiovisual</h4>
+                <p className="text-stone-600 text-sm">Producciones que complementan la narrativa de mis libros y amplían el alcance del mensaje.</p>
+              </div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
-              <h3 className="font-bold text-stone-900 mb-2">🚀 Próximos Proyectos</h3>
-              <p className="text-stone-600 text-sm">Proyectos en Curso</p>
-              <p className="text-stone-700 text-sm mt-2">Nuevos horizontes que continúan el legado de conciencia social y transformación.</p>
+            <div className="bg-white rounded-xl border border-stone-200 overflow-hidden">
+              <div className="relative h-40 bg-stone-200">
+                <Image
+                  src="/publicidad/proximos_proyectos.png"
+                  alt="Próximos Proyectos"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h4 className="font-bold text-premium-charcoal mb-2 text-base">🚀 Proyectos en Curso</h4>
+                <p className="text-stone-600 text-sm">Nuevos horizontes que continúan el legado de conciencia social y transformación.</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* PROPÓSITO */}
-      <section className="py-16 bg-stone-900 text-white">
-        <div className="container mx-auto px-4 max-w-3xl text-center">
-          <h2 className="text-3xl font-bold mb-6">Mi Propósito</h2>
-          <p className="text-stone-300 leading-relaxed mb-6">
-            Esta página web es mi espacio para compartir noticias, reflexiones y proyectos en curso. Es una invitación a mis lectores y lectoras a participar en un diálogo abierto sobre los temas que me inspiran, con el fin de generar conciencia, abrir caminos de diálogo y aportar a una transformación social cimentada en el respeto y la dignidad humana.
+      {/* Propósito */}
+      <section className="py-8 px-4 bg-gradient-premium text-white">
+        <div className="container-premium max-w-3xl mx-auto text-center">
+          <h3 className="font-serif text-2xl font-bold mb-4">Mi Propósito</h3>
+          <p className="text-stone-300 mb-3 text-sm leading-relaxed">
+            Esta página web es mi espacio para compartir noticias, reflexiones y proyectos en curso. Es una invitación a participar en un diálogo abierto sobre los temas que me inspiran.
           </p>
-          <p className="text-amber-400 font-medium italic">
+          <p className="text-premium-gold italic text-sm">
             Cada palabra, cada imagen, cada nota musical es un paso hacia un mundo más justo y humano.
           </p>
         </div>
       </section>
 
-      {/* FOOTER BIO */}
-      <section className="py-12 bg-stone-900 text-stone-400 text-center border-t border-stone-800">
-        <div className="container mx-auto px-4">
-          <p className="text-sm mb-2">© 2026 Ramón del Pozo Rott. Reservados todos los derechos.</p>
-          <p className="text-xs text-stone-500 mb-4">Espacio para la transformación social y el respeto humano.</p>
-          <a href="https://www.ramondelpozorott.es" className="text-amber-500 hover:underline text-sm">www.ramondelpozorott.es</a>
+      {/* CTA Final */}
+      <section className="py-8 bg-premium-black text-center px-4">
+        <div className="max-w-2xl mx-auto">
+          <p className="text-stone-400 mb-4 text-sm">¿Quieres conocer más sobre mi trabajo o colaborar en un proyecto?</p>
+          <Link href="/contacto" className="inline-flex items-center gap-2 px-6 py-3 bg-premium-gold text-premium-black font-medium rounded-full hover:bg-premium-goldLight transition-all">
+            Contacta conmigo
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
         </div>
       </section>
+
     </main>
   );
 }

@@ -1,88 +1,179 @@
-﻿import Link from 'next/link';
+﻿"use client";
+
+import Image from "next/image";
+import Link from "next/link";
 
 const LIBROS_INFANTILES = [
-  { categoria: '3-8 años', titulo: 'Aventura en la Selva Mágica', desc: 'Historia ilustrada para leer y colorear. Ideal para estimular imaginación y creatividad.', precio: '7,95 €', amazon: '#' },
-  { categoria: '3-8 años', titulo: 'El Gran Desfile de los Colores', desc: 'Un cuento visual donde los niños participan coloreando cada escena.', precio: '7,95 €', amazon: '#' },
-  { categoria: '3-8 años', titulo: 'De la Arena a las Cumbres', desc: 'Aventura educativa que combina lectura y pintura paso a paso.', precio: '7,95 €', amazon: '#' },
-  { categoria: '3-8 años', titulo: 'Un día en la Granja Alegre', desc: 'Animales, colores y diversión para aprender jugando.', precio: '7,95 €', amazon: '#' },
-  { categoria: 'Educativo', titulo: 'Sopas de Letras para Niños', desc: 'Refuerza lectura y atención con actividades divertidas.', precio: '8,99 €', amazon: '#' },
-  { categoria: 'Educativo', titulo: 'Mi Gran Cuaderno de Números', desc: 'Aprende números paso a paso de forma visual y sencilla.', precio: '8,99 €', amazon: '#' },
-  { categoria: 'Creatividad', titulo: 'Traza, Colorea y Juega', desc: 'Desarrollo de motricidad fina y creatividad infantil.', precio: '7,95 €', amazon: '#' },
-  { categoria: 'Aprendizaje', titulo: 'Aprender a trazar el abecedario', desc: 'Primer contacto con letras de forma divertida.', precio: '8,95 €', amazon: '#' },
-  { categoria: 'Diversión', titulo: 'Diversión para Colorear', desc: 'Horas de entretenimiento creativo para niños pequeños.', precio: '7,95 €', amazon: '#' }
+  {
+    id: "selva",
+    img: "/libros/Selva-Magica.webp",
+    badge: "3-8 años",
+    title: "Aventura en la Selva Mágica",
+    desc: "Historia ilustrada para leer y colorear. Ideal para estimular imaginación y creatividad.",
+    price: "7,95 €",
+    amazon: "https://www.amazon.es/Aventura-Selva-M%C3%A1gica-cuento-colorear/dp/B0GQRHHCVP"
+  },
+  {
+    id: "desfile",
+    img: "/libros/2-1.jpg",
+    badge: "3-8 años",
+    title: "El Gran Desfile de los Colores",
+    desc: "Un cuento visual donde los niños participan coloreando cada escena.",
+    price: "7,95 €",
+    amazon: "https://www.amazon.es/dp/B0GQYZN5HL"
+  },
+  {
+    id: "cumbres",
+    img: "/libros/Historia-para-colorear.png",
+    badge: "3-8 años",
+    title: "De la Arena a las Cumbres",
+    desc: "Aventura educativa que combina lectura y pintura paso a paso.",
+    price: "7,95 €",
+    amazon: "https://www.amazon.es/dp/B0GR8JV8XM"
+  },
+  {
+    id: "granja",
+    img: "/libros/2-1.jpg",
+    badge: "3-8 años",
+    title: "Un día en la Granja Alegre",
+    desc: "Animales, colores y diversión para aprender jugando.",
+    price: "7,95 €",
+    amazon: "https://www.amazon.es/d%C3%ADa-sol-Granja-Alegre/dp/B0GQVFK3NF"
+  },
+  {
+    id: "sopas",
+    img: "/libros/portada-2.png",
+    badge: "Educativo",
+    title: "Sopas de Letras para Niños",
+    desc: "Refuerza lectura y atención con actividades divertidas.",
+    price: "8,99 €",
+    amazon: "https://www.amazon.es/dp/B0GTK4J2QV"
+  },
+  {
+    id: "numeros",
+    img: "/libros/portada-2.png",
+    badge: "Educativo",
+    title: "Mi Gran Cuaderno de Números",
+    desc: "Aprende números paso a paso de forma visual y sencilla.",
+    price: "8,99 €",
+    amazon: "https://www.amazon.es/dp/B0GTJ5ZJQ6"
+  },
+  {
+    id: "traza",
+    img: "/libros/portada_final_ramon_pozo.webp",
+    badge: "Creatividad",
+    title: "Traza, Colorea y Juega",
+    desc: "Desarrollo de motricidad fina y creatividad infantil.",
+    price: "7,95 €",
+    amazon: "https://www.amazon.es/dp/B0GTMCKZC2"
+  },
+  {
+    id: "abecedario",
+    img: "/libros/Portada-1.png",
+    badge: "Aprendizaje",
+    title: "Aprender a trazar el abecedario",
+    desc: "Primer contacto con letras de forma divertida.",
+    price: "8,95 €",
+    amazon: "https://www.amazon.es/dp/B0GRNV7ZH5"
+  },
+  {
+    id: "diversion",
+    img: "/libros/portada.png",
+    badge: "Diversión",
+    title: "Diversión para Colorear",
+    desc: "Horas de entretenimiento creativo para niños pequeños.",
+    price: "7,95 €",
+    amazon: "https://www.amazon.es/DIVERSI%C3%93N-PARA-COLOREAR-p%C3%A1ginas-dibujos/dp/B0GQQ8KZX1"
+  }
 ];
 
 export default function LiteraturaInfantilPage() {
   return (
-    <main className="min-h-screen bg-stone-50">
-      {/* HERO */}
-      <section className="py-16 text-center px-4 bg-white border-b border-stone-200">
-        <h1 className="text-4xl md:text-5xl font-bold text-stone-900 mb-4">Literatura Infantil</h1>
-        <p className="text-xl text-stone-600 max-w-3xl mx-auto mb-8">Cuentos infantiles para colorear (3 a 8 años)</p>
-        <div className="max-w-3xl mx-auto text-stone-700 leading-relaxed space-y-4">
-          <p>Imagina un libro donde tu hijo no solo lee la historia, sino que también la crea con sus propias manos.</p>
-          <p>Estos cuentos infantiles para colorear están pensados para niños de 3 a 8 años que aprenden mejor cuando juegan, imaginan y participan activamente.</p>
-          <p>Cada libro combina dos cosas que los niños adoran: historias sencillas y dibujos listos para dar vida con color.</p>
-          <p className="font-medium text-stone-900 mt-4">No son solo cuentos. Son experiencias creativas que conectan lectura, imaginación y juego.</p>
-        </div>
-      </section>
+    <main className="min-h-screen bg-[#f5f5f7]">
+      
+      {/* Header sencillo */}
+      <header className="text-center py-12 px-4 bg-white border-b border-stone-200">
+        <p className="text-sm font-medium tracking-widest uppercase text-[#e11d48] mb-2">
+          Literatura Infantil
+        </p>
+        <h1 className="font-serif text-3xl md:text-4xl font-bold text-[#111] mb-2">
+          Libros para aprender jugando
+        </h1>
+        <p className="text-[#666] max-w-xl mx-auto">
+          Cuentos ilustrados y actividades creativas para niños de 3 a 8 años
+        </p>
+      </header>
 
-      {/* CATÁLOGO DE LIBROS */}
-      <section className="py-16 container mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {LIBROS_INFANTILES.map((libro, i) => (
-            <div key={i} className="bg-white p-6 rounded-lg shadow-sm border border-stone-200 hover:shadow-md transition flex flex-col">
-              <span className="inline-block w-fit px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wide rounded-full mb-3">{libro.categoria}</span>
-              <h3 className="text-xl font-bold text-stone-900 mb-2">{libro.titulo}</h3>
-              <p className="text-stone-600 text-sm mb-4 flex-grow">{libro.desc}</p>
-              <div className="flex items-center justify-between mt-auto pt-4 border-t border-stone-100">
-                <span className="text-lg font-bold text-stone-900">{libro.precio}</span>
-                <a href={libro.amazon} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-stone-900 text-white text-sm rounded hover:bg-stone-800 transition">Ver en Amazon</a>
+      {/* Galería de libros */}
+      <section className="py-12 px-4">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          {LIBROS_INFANTILES.map((libro) => (
+            <article 
+              key={libro.id}
+              className="group bg-white rounded-2xl overflow-hidden shadow-[0_10px_25px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] flex flex-col"
+            >
+              {/* Imagen */}
+              <div className="relative w-full h-72 sm:h-80 bg-stone-100 overflow-hidden">
+                <Image
+                  src={libro.img}
+                  alt={libro.title}
+                  fill
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
               </div>
-            </div>
+
+              {/* Contenido */}
+              <div className="p-4 flex flex-col flex-1 gap-2.5">
+                
+                {/* Badge de categoría */}
+                <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wide text-white bg-[#e11d48] w-fit">
+                  {libro.badge}
+                </span>
+
+                {/* Título */}
+                <h3 className="font-bold text-base text-[#111] leading-tight">
+                  {libro.title}
+                </h3>
+
+                {/* Descripción */}
+                <p className="text-[13px] text-[#666] leading-relaxed flex-1">
+                  {libro.desc}
+                </p>
+
+                {/* Precio + CTA */}
+                <div className="mt-1">
+                  <p className="text-[14px] font-bold text-[#111] mb-2">{libro.price}</p>
+                  <a
+                    href={libro.amazon}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block w-full text-center px-3 py-2.5 bg-[#e11d48] text-white rounded-xl text-[13px] font-bold no-underline hover:opacity-90 transition-opacity"
+                  >
+                    Ver en Amazon
+                  </a>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* BENEFICIOS EDUCATIVOS */}
-      <section className="py-16 bg-white border-t border-stone-200">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl font-bold text-stone-900 text-center mb-8">Libros para colorear con cuento: aprendizaje y diversión en uno</h2>
-          <p className="text-stone-700 mb-6 text-center">Entre los 3 y los 8 años, los niños están desarrollando habilidades clave. Por eso, estos cuentos están pensados para:</p>
-          <ul className="grid md:grid-cols-2 gap-4 mb-8">
-            {['Estimular la imaginación desde edades tempranas', 'Mejorar la motricidad fina a través del coloreado', 'Favorecer la concentración', 'Reforzar la comprensión lectora', 'Reducir el tiempo frente a pantallas'].map((item, i) => (
-              <li key={i} className="flex items-start gap-3 bg-stone-50 p-4 rounded-lg">
-                <span className="text-amber-600 mt-1 font-bold">✓</span>
-                <span className="text-stone-700">{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="bg-amber-50 p-6 rounded-lg border border-amber-200">
-            <p className="text-stone-800 font-medium mb-2">👶 Para los más pequeños (3-5 años)</p>
-            <p className="text-stone-600 mb-4">Los textos son breves y claros, ideales para leer en familia.</p>
-            <p className="text-stone-800 font-medium mb-2">🧒 Para los mayores (6-8 años)</p>
-            <p className="text-stone-600">Las historias fomentan la lectura autónoma y la creatividad personal.</p>
-          </div>
-        </div>
+      {/* CTA final */}
+      <section className="py-12 px-4 text-center bg-white border-t border-stone-200">
+        <p className="text-[#666] mb-4">¿Buscas más libros para adultos?</p>
+        <Link 
+          href="/libros" 
+          className="inline-flex items-center gap-2 px-6 py-3 bg-[#111] text-white rounded-xl font-medium hover:bg-[#222] transition-colors"
+        >
+          Ver colección completa
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </Link>
       </section>
 
-      {/* CASOS DE USO */}
-      <section className="py-16 bg-stone-50 border-t border-stone-200">
-        <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold text-stone-900 mb-6">Perfectos para casa, colegio o regalo</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            {['Regalos de cumpleaños', 'Actividades escolares', 'Tiempo creativo en casa', 'Vacaciones sin pantallas'].map((item, i) => (
-              <div key={i} className="bg-white p-4 rounded-lg shadow-sm border border-stone-200 text-stone-700 font-medium">{item}</div>
-            ))}
-          </div>
-          <p className="text-stone-600">Son una opción práctica para padres y profesores que buscan algo más que un simple cuaderno de colorear.</p>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-12 text-center bg-white border-t border-stone-200">
-        <Link href="/libros" className="inline-block px-8 py-3 bg-stone-900 text-white rounded hover:bg-stone-800 transition font-medium">← Volver al catálogo completo</Link>
-      </section>
     </main>
   );
 }
