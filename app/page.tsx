@@ -271,7 +271,7 @@ export default function HomePage() {
           <div className="reveal-on-scroll relative">
             <div className="relative aspect-square max-w-md mx-auto rounded-2xl overflow-hidden shadow-2xl border-2 border-premium-gold/20">
               <Image
-                src="/autor/autor.png"
+                src="/autor/autor-oficina.png"
                 alt="Ramon del Pozo Rott - Escritor"
                 fill
                 className="object-cover object-center"
@@ -320,4 +320,5 @@ export default function HomePage() {
     </main>
   );
 }
+
 

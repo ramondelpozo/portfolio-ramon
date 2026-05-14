@@ -34,7 +34,7 @@ export default function BiografiaPage() {
             <div className="flex justify-center mb-6">
               <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-premium-gold/30 shadow-lg">
                 <Image
-                  src="/autor/autor.png"
+                  src="/autor/autor-oficina.png"
                   alt="Ramón del Pozo Rott - Escritor"
                   fill
                   className="object-cover"
@@ -244,3 +244,4 @@ export default function BiografiaPage() {
     </main>
   );
 }
+
