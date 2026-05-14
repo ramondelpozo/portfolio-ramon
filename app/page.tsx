@@ -1,181 +1,393 @@
-﻿import Link from 'next/link';
+﻿'use client';
+
+import { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function HomePage() {
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  // Efecto parallax suave en el hero
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const scrolled = window.scrollY;
+        heroRef.current.style.transform = `translateY(${scrolled * 0.1}px)`;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Revelar elementos al hacer scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const librosDestacados = [
+    {
+      titulo: 'Tras las huellas del pasado',
+      subtitulo: 'Memoria • Culpa • Segundas oportunidades',
+      descripcion: 'Un joven marcado por la pérdida y la adicción busca redención entre dos culturas. Una historia de resiliencia que conecta con el alma.',
+      portada: '/libros/tras-huellas.jpg',
+      categoria: 'Drama',
+      precio: '14,95 €',
+      amazon: '#'
+    },
+    {
+      titulo: 'El bosque que calla',
+      subtitulo: 'Thriller histórico • Misterio • Supervivencia',
+      descripcion: 'Un bosque que guarda secretos. Una memoria rota. Una verdad que nadie podía decir. Cuando el silencio pesa más que el miedo.',
+      portada: '/libros/bosque-calla.jpg',
+      categoria: 'Thriller',
+      precio: 'Próximamente',
+      amazon: '#'
+    },
+    {
+      titulo: 'Aventura en la Selva Mágica',
+      subtitulo: 'Literatura infantil • 3-8 años • Para colorear',
+      descripcion: 'Un viaje lleno de animales, amistad y descubrimientos donde cada página se convierte en una aventura para imaginar y crear.',
+      portada: '/libros/selva-magica.jpg',
+      categoria: 'Infantil',
+      precio: '7,95 €',
+      amazon: '#'
+    }
+  ];
+
   return (
-    <main className="min-h-screen bg-stone-50">
-      {/* HERO PRINCIPAL */}
-      <section className="bg-stone-50 py-20 md:py-32 text-center px-4">
-        <h1 className="text-4xl md:text-6xl font-bold text-stone-900 mb-4">Ramón del Pozo Rott</h1>
-        <p className="text-xl md:text-2xl text-stone-600 max-w-3xl mx-auto mb-4">
-          Historias de suspense, acción y realidad para adultos y aprendizaje para niños. Historias que no solo se leen. Se sienten.
-        </p>
-        <p className="text-stone-500 max-w-2xl mx-auto mb-8">
-          Novelas de tensión real y denuncia social. Vivienda, poder, identidad y supervivencia contados desde la emoción y la experiencia humana.
-        </p>
-        <Link href="/libros" className="inline-block px-8 py-3 bg-stone-900 text-white rounded-md hover:bg-stone-800 transition font-medium">
-          Descubrir mis libros
-        </Link>
-        <p className="mt-4 text-sm text-stone-500">Disponible ahora en Amazon España (físico y digital).</p>
-      </section>
+    <main className="min-h-screen bg-premium-cream">
+      
+      {/* === HERO CINEMÁTICO === */}
+      <section className="relative h-screen overflow-hidden bg-gradient-premium flex items-center justify-center">
+        
+        {/* Partículas de luz flotantes */}
+        <div className="particles-bg">
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={i} 
+              className="particle floating"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${6 + Math.random() * 4}s`
+              }}
+            />
+          ))}
+        </div>
 
-      {/* HERO NOVELA DESTACADA */}
-      <section className="bg-stone-900 text-white py-16">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/2">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Hero de la novela El Bosque que Calla.</h2>
-            <p className="text-stone-300 mb-6 leading-relaxed">
-              Adéntrate en un bosque donde el silencio guarda secretos y la memoria pesa más que cualquier miedo. Una historia de supervivencia, misterios y aquello que permanece cuando todo lo demás desaparece.
-            </p>
-            <p className="text-amber-400 italic mb-6">
-              ¡Si disfrutas de la lectura, deja tu reseña en Amazon! Tu opinión ayuda a otros lectores a descubrir esta historia.
-            </p>
-            <a href="#" className="inline-block px-6 py-3 border border-amber-400 text-amber-400 rounded-md hover:bg-amber-400 hover:text-stone-900 transition font-medium">
-              Dejar reseña en Amazon
-            </a>
+        {/* Brillo dorado sutil */}
+        <div className="absolute inset-0 bg-gradient-gold opacity-20 pointer-events-none" />
+
+        {/* Contenido principal */}
+        <div ref={heroRef} className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+          
+          <span className="cinematic-fade inline-block px-4 py-2 bg-premium-gold/10 border border-premium-gold/30 rounded-full text-premium-gold text-sm font-medium tracking-wider mb-6">
+            NUEVA COLECCIÓN 2026
+          </span>
+          
+          <h1 className="cinematic-fade text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+            Tras las huellas del <span className="text-gradient-gold">pasado</span>
+          </h1>
+          
+          <p className="cinematic-fade text-lg md:text-xl text-stone-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+            Historias que exploran la memoria, el destino y las decisiones que cambian una vida. 
+            Desde novelas con profundidad humana hasta libros infantiles que despiertan creatividad e imaginación.
+          </p>
+          
+          <div className="cinematic-fade flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/libros" 
+              className="group px-8 py-4 bg-premium-gold text-premium-black font-medium rounded-full hover:bg-premium-goldLight transition-all duration-300 shadow-lg hover:shadow-premium-gold/30"
+            >
+              Descubre mis obras
+              <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+            <Link 
+              href="#coleccion" 
+              className="px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
+            >
+              Explorar colección
+            </Link>
           </div>
-          <div className="md:w-1/2 bg-stone-800 aspect-[2/3] rounded-lg flex items-center justify-center text-stone-500">
-            [Portada El Bosque que Calla]
+        </div>
+
+        {/* Portada flotante en 3D */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 hidden md:block">
+          <div className="floating relative w-40 h-60 bg-premium-charcoal rounded-lg shadow-2xl border border-premium-gold/20 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-premium-gold/20 to-transparent" />
+            <div className="absolute inset-0 flex items-center justify-center text-premium-gold/60 text-xs text-center p-4">
+              [Portada 3D]
+            </div>
           </div>
+          {/* Sombra elegante */}
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-32 h-4 bg-black/30 rounded-full blur-xl" />
         </div>
       </section>
 
-      {/* COLECCIÓN 2025-2026 */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-stone-900 mb-2">Estos son algunos de mis libros disponibles y próximos lanzamientos en Amazon España.</h2>
-          <p className="text-stone-500 mb-12">Temporada 2025 · 2026 | Colección Literaria Ramón del Pozo Rott</p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-6xl mx-auto">
-            {['Sekou Raíces de Libertad', 'El Bosque que Calla', 'Límite de Control', 'Ojos de Lobo', 'La Cuidadora'].map((title, i) => (
-              <div key={i} className="bg-stone-100 aspect-[2/3] rounded-lg flex items-center justify-center text-stone-600 text-sm p-4 text-center font-medium">
-                {title}
-              </div>
+      {/* === CARRUSEL DE LIBROS === */}
+      <section id="coleccion" className="section-padding bg-premium-cream">
+        <div className="container-premium">
+          <div className="text-center mb-16 reveal-on-scroll">
+            <span className="text-premium-gold font-medium tracking-wider uppercase text-sm">Colección Literaria</span>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-premium-charcoal mt-3 mb-4">
+              Libros que dejan huella
+            </h2>
+            <p className="text-premium-warm max-w-2xl mx-auto">
+              Cada obra está diseñada para crear una experiencia: atmósfera, reflexión y emoción que permanecen después de cerrar la última página.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {librosDestacados.map((libro, i) => (
+              <article 
+                key={i} 
+                className="book-card bg-white rounded-xl overflow-hidden shadow-soft border border-stone-100 reveal-on-scroll"
+                style={{ transitionDelay: `${i * 0.1}s` }}
+              >
+                {/* Portada */}
+                <div className="relative aspect-[2/3] bg-gradient-to-br from-stone-100 to-stone-200 overflow-hidden">
+                  <div className="absolute inset-0 flex items-center justify-center text-stone-400 text-sm text-center p-4">
+                    {libro.portada ? (
+                      <Image 
+                        src={libro.portada} 
+                        alt={libro.titulo} 
+                        fill 
+                        className="object-cover transition-transform duration-500 group-hover:scale-105" 
+                      />
+                    ) : (
+                      <span>[{libro.titulo}]</span>
+                    )}
+                  </div>
+                  {/* Badge de categoría */}
+                  <span className="absolute top-4 left-4 px-3 py-1 bg-premium-charcoal/90 text-premium-gold text-xs font-medium rounded-full">
+                    {libro.categoria}
+                  </span>
+                </div>
+
+                {/* Contenido */}
+                <div className="p-6">
+                  <h3 className="text-xl font-serif font-bold text-premium-charcoal mb-1">{libro.titulo}</h3>
+                  <p className="text-premium-warm text-sm mb-3">{libro.subtitulo}</p>
+                  <p className="text-stone-600 text-sm leading-relaxed mb-4">{libro.descripcion}</p>
+                  
+                  <div className="flex items-center justify-between pt-4 border-t border-stone-100">
+                    <span className={`font-bold ${libro.precio === 'Próximamente' ? 'text-premium-gold' : 'text-premium-charcoal'}`}>
+                      {libro.precio}
+                    </span>
+                    <a 
+                      href={libro.amazon} 
+                      className="px-4 py-2 bg-premium-charcoal text-white text-sm rounded-full hover:bg-premium-gold hover:text-premium-black transition-colors font-medium"
+                    >
+                      {libro.precio === 'Próximamente' ? 'Avísame' : 'Ver en Amazon'}
+                    </a>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* NOVEDADES / ÚLTIMOS LIBROS */}
-      <section className="py-16 bg-stone-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-amber-700 font-bold uppercase tracking-wide text-sm">Novedades</span>
-            <h2 className="text-3xl font-bold text-stone-900 mt-2">Últimos libros</h2>
-            <p className="text-stone-600 mt-2 max-w-2xl mx-auto">Incluye tanto libros ya disponibles como títulos que se lanzarán próximamente.</p>
-            <Link href="/libros" className="inline-block mt-4 text-stone-900 font-medium hover:underline">Ver todos mis libros →</Link>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-stone-200 flex gap-6">
-              <div className="w-24 h-36 bg-stone-200 rounded flex-shrink-0 flex items-center justify-center text-xs text-stone-500">Portada</div>
-              <div>
-                <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded mb-2">Ya disponible</span>
-                <h3 className="text-xl font-bold text-stone-900">Límite de control</h3>
-                <p className="text-amber-700 text-sm font-medium mb-2">Thriller tecnológico</p>
-                <p className="text-stone-600 text-sm mb-4">Hasta dónde ayudar sin decidir. En un Madrid donde cada segundo puede predecirse, Álex Vega se enfrenta a la línea más difícil: salvar vidas sin perder su libertad.</p>
-                <a href="#" className="inline-block px-4 py-2 bg-stone-900 text-white text-sm rounded hover:bg-stone-800 transition">🛒 Comprar</a>
-              </div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-stone-200 flex gap-6">
-              <div className="w-24 h-36 bg-stone-200 rounded flex-shrink-0 flex items-center justify-center text-xs text-stone-500">Portada</div>
-              <div>
-                <span className="inline-block bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded mb-2">Próximamente</span>
-                <h3 className="text-xl font-bold text-stone-900">El bosque que calla</h3>
-                <p className="text-amber-700 text-sm font-medium mb-2">Thriller histórico</p>
-                <p className="text-stone-600 text-sm mb-4">La verdad que nadie podía decir. Hubo un tiempo en que el mundo decidió no mirar. Jacobo y otros supervivientes guardan fragmentos de memoria rota.</p>
-                <span className="inline-block px-4 py-2 bg-stone-200 text-stone-500 text-sm rounded cursor-not-allowed">Próximamente</span>
-              </div>
-            </div>
+          <div className="text-center mt-12 reveal-on-scroll">
+            <Link href="/libros" className="inline-flex items-center gap-2 text-premium-charcoal font-medium hover:text-premium-gold transition-colors">
+              Ver colección completa
+              <span className="transition-transform hover:translate-x-1">→</span>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ÚLTIMAS HISTORIAS PUBLICADAS */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-stone-900 text-center mb-12">Últimas historias publicadas</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      {/* === SECCIÓN AUTOR (ELEGANCIA CINEMATOGRÁFICA) === */}
+      <section className="section-padding bg-gradient-premium text-white">
+        <div className="container-premium grid md:grid-cols-2 gap-12 items-center">
+          
+          {/* Foto autor */}
+          <div className="reveal-on-scroll relative">
+            <div className="relative aspect-square max-w-md mx-auto rounded-2xl overflow-hidden shadow-2xl border border-premium-gold/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-premium-gold/10 to-transparent" />
+              <div className="absolute inset-0 flex items-center justify-center text-premium-gold/40">
+                [Foto elegante B&W]
+              </div>
+            </div>
+            {/* Brillo decorativo */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-premium-gold/20 rounded-full blur-2xl" />
+          </div>
+
+          {/* Texto */}
+          <div className="reveal-on-scroll">
+            <span className="text-premium-gold font-medium tracking-wider uppercase text-sm">Sobre el autor</span>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mt-3 mb-6">
+              Ramón del Pozo Rott
+            </h2>
+            <p className="text-stone-300 text-lg mb-6 leading-relaxed">
+              Escritor de narrativa contemporánea y literatura infantil creativa.
+            </p>
+            <p className="text-stone-400 leading-relaxed mb-8">
+              Mis historias nacen de una idea simple: <strong className="text-white">los libros no solo se leen, se viven</strong>. Cada obra busca dejar una sensación, una reflexión o una chispa de imaginación que permanezca incluso después de cerrar la última página.
+            </p>
+            <Link href="/biografia" className="inline-flex items-center gap-2 px-6 py-3 bg-premium-gold text-premium-black font-medium rounded-full hover:bg-premium-goldLight transition-all">
+              Conocer mi historia
+              <span className="transition-transform hover:translate-x-1">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* === NOVELAS (OSCURAS, CINEMATOGRÁFICAS) === */}
+      <section className="section-padding bg-premium-charcoal text-white relative overflow-hidden">
+        {/* Textura de fondo sutil */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(201,169,97,0.1) 0%, transparent 50%)' }} />
+        
+        <div className="container-premium relative z-10">
+          <div className="text-center mb-16 reveal-on-scroll">
+            <span className="text-premium-gold font-medium tracking-wider uppercase text-sm">Narrativa para adultos</span>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mt-3 mb-4">
+              Novelas que dejan huella
+            </h2>
+            <p className="text-stone-400 max-w-2xl mx-auto">
+              Historias sobre decisiones, memoria, cambio y búsqueda personal. Libros pensados para lectores que buscan algo más que entretenimiento: atmósfera, reflexión y emoción real.
+            </p>
+          </div>
+
+          {/* Libro destacado con efecto de transición */}
+          <div className="max-w-4xl mx-auto reveal-on-scroll">
+            <div className="relative bg-premium-black/50 rounded-2xl p-8 md:p-12 border border-premium-gold/10 backdrop-blur-sm">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="relative aspect-[2/3] bg-stone-800 rounded-lg overflow-hidden floating">
+                  <div className="absolute inset-0 flex items-center justify-center text-premium-gold/30 text-sm">
+                    [Portada destacada]
+                  </div>
+                </div>
+                <div>
+                  <span className="text-premium-gold font-medium text-sm uppercase tracking-wide">Thriller psicológico</span>
+                  <h3 className="text-2xl md:text-3xl font-serif font-bold mt-2 mb-4">El bosque que calla</h3>
+                  <p className="text-stone-300 leading-relaxed mb-6">
+                    Hubo un tiempo en que el mundo decidió no mirar. Jacobo y otros supervivientes guardan fragmentos de memoria rota. Este libro no busca consolarte. Busca que no olvides.
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <span className="text-premium-gold font-bold">Próximamente</span>
+                    <button className="px-5 py-2 border border-premium-gold/50 text-premium-gold rounded-full hover:bg-premium-gold hover:text-premium-black transition-colors text-sm font-medium">
+                      Avísame del lanzamiento
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12 reveal-on-scroll">
+            <Link href="/libros" className="inline-flex items-center gap-2 text-white font-medium hover:text-premium-gold transition-colors">
+              Ver todas las novelas
+              <span className="transition-transform hover:translate-x-1">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* === LITERATURA INFANTIL (LUZ, COLOR, VIDA) === */}
+      <section className="section-padding bg-gradient-warm relative overflow-hidden">
+        {/* Elementos decorativos suaves */}
+        <div className="absolute top-10 right-10 w-32 h-32 bg-premium-gold/10 rounded-full blur-3xl floating-fast" />
+        <div className="absolute bottom-10 left-10 w-24 h-24 bg-amber-200/20 rounded-full blur-2xl floating" />
+        
+        <div className="container-premium relative z-10">
+          <div className="text-center mb-16 reveal-on-scroll">
+            <span className="text-premium-warm font-medium tracking-wider uppercase text-sm">Para los más pequeños</span>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-premium-charcoal mt-3 mb-4">
+              Literatura infantil para aprender jugando
+            </h2>
+            <p className="text-premium-earth max-w-2xl mx-auto">
+              Libros diseñados para que los niños lean, imaginen y creen. Cada historia combina lectura, juego y creatividad para convertir el aprendizaje en una experiencia divertida y natural.
+            </p>
+          </div>
+
+          {/* Beneficios en tarjetas */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12 reveal-on-scroll">
             {[
-              { title: "El Bosque que calla", desc: "Novela de suspense y misterio donde la supervivencia, la memoria y el trauma se entrelazan..." },
-              { title: "Tras las huellas del pasado", desc: "Una historia sobre memoria, culpa y segundas oportunidades. Un protagonista marcado por su pasado..." },
-              { title: "Inmunidad Diplomática", desc: "Corrupción y poder en el entorno diplomático. Secretos, privilegios y silencios donde la justicia deja de ser igual..." },
-              { title: "Mascotas en el Olvido", desc: "Bienestar animal, abandono y conciencia social. Una historia sobre maltrato, empatía y la posibilidad de cambiar..." }
+              { icon: '✨', title: 'Explorar', desc: 'Descubrir mundos nuevos' },
+              { icon: '🎨', title: 'Imaginar', desc: 'Despertar la creatividad' },
+              { icon: '🤝', title: 'Crear', desc: 'Aprender haciendo' }
             ].map((item, i) => (
-              <div key={i} className="bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-md transition">
-                <h3 className="font-bold text-stone-900 mb-2">{item.title}</h3>
-                <p className="text-stone-600 text-sm mb-4">{item.desc}</p>
-                <Link href="#" className="text-amber-700 text-sm font-medium hover:underline">Ver libro →</Link>
+              <div key={i} className="bg-white/70 backdrop-blur-sm p-6 rounded-xl border border-stone-200 text-center hover-lift">
+                <span className="text-3xl mb-3 block">{item.icon}</span>
+                <h4 className="font-bold text-premium-charcoal mb-1">{item.title}</h4>
+                <p className="text-sm text-premium-earth">{item.desc}</p>
               </div>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <p className="text-stone-600 max-w-2xl mx-auto mb-4">Ficción basada en la realidad: historias sobre vivienda, poder, identidad, corrupción y supervivencia.</p>
-            <Link href="/libros" className="inline-block px-6 py-2 border-2 border-stone-900 text-stone-900 rounded hover:bg-stone-100 transition">Explorar historias</Link>
-          </div>
-        </div>
-      </section>
 
-      {/* BIOGRAFÍA TEASER */}
-      <section className="py-16 bg-stone-900 text-white text-center">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <p className="text-xl md:text-2xl mb-8 leading-relaxed">Escribo novelas de suspense, acción y ficción social donde la realidad y la emoción siempre están presentes.</p>
-          <Link href="/biografia" className="inline-block px-8 py-3 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition font-medium">
-            Conocer al autor
-          </Link>
-        </div>
-      </section>
-
-      {/* PROMOCIÓN */}
-      <section className="py-12 bg-amber-50 border-t border-amber-100">
-        <div className="container mx-auto px-4 text-center">
-          <h3 className="text-2xl font-bold text-stone-900 mb-2">¡Algunos de mis libros tienen descuentos especiales!</h3>
-          <p className="text-stone-600 mb-6">Aprovecha antes de que se agoten.</p>
-          <Link href="/libros" className="inline-block px-6 py-2 bg-stone-900 text-white rounded hover:bg-stone-800 transition">Ver libros</Link>
-        </div>
-      </section>
-
-      {/* FOOTER COMPLETO */}
-      <footer className="bg-stone-900 text-stone-400 py-16 border-t border-stone-800">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-              <h4 className="text-white font-bold text-lg mb-4">Ramón del Pozo Rott</h4>
-              <p className="text-sm">Historias que no solo se leen. Se sienten.</p>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">CONOCER MÁS</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/biografia" className="hover:text-white transition">BIOGRAFÍA</Link></li>
-                <li><Link href="/blog" className="hover:text-white transition">BLOG</Link></li>
-                <li><Link href="/libros" className="hover:text-white transition">LIBROS</Link></li>
-                <li><Link href="/contacto" className="hover:text-white transition">CONTACTO</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">SOPORTE</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/blog/faq" className="hover:text-white transition">FAQ</Link></li>
-                <li><Link href="#" className="hover:text-white transition">POLÍTICA DE PRIVACIDAD</Link></li>
-                <li><Link href="#" className="hover:text-white transition">POLÍTICA DE COOKIES</Link></li>
-                <li><Link href="#" className="hover:text-white transition">AVISO LEGAL</Link></li>
-                <li><Link href="#" className="hover:text-white transition">MAPA DEL SITIO</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">SIGUE CONECTADO</h4>
-              <p className="text-sm mb-4">Mantente conectado y recibe noticias interesantes.</p>
-              <div className="flex gap-4 text-xl">
-                <a href="#" className="hover:text-white transition">📘</a>
-                <a href="#" className="hover:text-white transition">📸</a>
-                <a href="#" className="hover:text-white transition">🐦</a>
-                <a href="#" className="hover:text-white transition">💼</a>
-                <a href="#" className="hover:text-white transition">📺</a>
+          {/* Libro infantil destacado */}
+          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-soft border border-stone-200 overflow-hidden reveal-on-scroll">
+            <div className="grid md:grid-cols-2">
+              <div className="relative aspect-square md:aspect-auto bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
+                <div className="text-6xl">🎨</div>
+                <span className="absolute bottom-4 left-4 px-3 py-1 bg-premium-gold text-premium-black text-xs font-bold rounded-full">
+                  3-8 años
+                </span>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-serif font-bold text-premium-charcoal mb-2">Aventura en la Selva Mágica</h3>
+                <p className="text-premium-warm text-sm mb-4">Un viaje lleno de animales, amistad y descubrimientos</p>
+                <p className="text-stone-600 mb-6 leading-relaxed">
+                  Cada página se convierte en una aventura para colorear. Diseñado para estimular la imaginación, mejorar la concentración y favorecer el aprendizaje activo sin pantallas.
+                </p>
+                <ul className="space-y-2 mb-6 text-sm text-stone-600">
+                  <li className="flex items-center gap-2">✓ Estimula la creatividad</li>
+                  <li className="flex items-center gap-2">✓ Mejora la concentración</li>
+                  <li className="flex items-center gap-2">✓ Favorece la imaginación</li>
+                </ul>
+                <div className="flex items-center gap-4">
+                  <span className="text-xl font-bold text-premium-charcoal">7,95 €</span>
+                  <a href="#" className="px-5 py-2 bg-premium-charcoal text-white rounded-full hover:bg-premium-gold hover:text-premium-black transition-colors text-sm font-medium">
+                    Ver en Amazon
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <div className="border-t border-stone-800 pt-8 text-center text-xs">
-            <p>Copyright © 2026 Ramón del Pozo Rott. Reservados todos los derechos.</p>
+
+          <div className="text-center mt-12 reveal-on-scroll">
+            <Link href="/libros/literatura-infantil" className="inline-flex items-center gap-2 text-premium-charcoal font-medium hover:text-premium-gold transition-colors">
+              Explorar colección infantil
+              <span className="transition-transform hover:translate-x-1">→</span>
+            </Link>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* === CTA FINAL === */}
+      <section className="py-20 bg-premium-black text-center px-4">
+        <div className="max-w-3xl mx-auto reveal-on-scroll">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-6">
+            ¿Listo para entrar en el universo?
+          </h2>
+          <p className="text-stone-400 mb-8">
+            Cada libro es una puerta a una nueva experiencia. Elige tu próxima aventura.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/libros" className="px-8 py-4 bg-premium-gold text-premium-black font-medium rounded-full hover:bg-premium-goldLight transition-all">
+              Explorar colección
+            </Link>
+            <Link href="/contacto" className="px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all backdrop-blur-sm">
+              Hablemos
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
