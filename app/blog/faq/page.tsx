@@ -22,7 +22,7 @@ const FAQS = [
 ];
 
 export default function FAQPage() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <main className="min-h-screen bg-stone-50">
@@ -71,3 +71,4 @@ export default function FAQPage() {
     </main>
   );
 }
+
