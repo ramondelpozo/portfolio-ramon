@@ -309,7 +309,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/libros" className="btn-premium">
-              Explorar coleccion
+              Explorar colección
             </Link>
             <Link href="/contacto" className="btn-premium btn-outline">
               Hablemos
@@ -320,6 +320,8 @@ export default function HomePage() {
     </main>
   );
 }
+
+
 
 
 
