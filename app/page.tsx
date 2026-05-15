@@ -59,7 +59,7 @@ export default function HomePage() {
         {/* Contenido */}
         <div ref={heroRef} className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           <span className="fade-in-up inline-block px-6 py-2 bg-premium-gold/10 border border-premium-gold/30 rounded-full text-premium-gold text-sm font-bold tracking-widest uppercase mb-6">
-            Nueva ColecciÃ³n 2026
+            Nueva Colección 2026
           </span>
           
           <h1 className="fade-in-up text-white font-bold drop-shadow-lg mb-6" style={{ animationDelay: "0.2s" }}>
@@ -68,7 +68,7 @@ export default function HomePage() {
           
           <p className="fade-in-up text-lg md:text-xl text-white/90 max-w-3xl drop-shadow mx-auto mb-10 leading-relaxed" style={{ animationDelay: "0.4s" }}>
             Historias que exploran la memoria, el destino y las decisiones que cambian una vida. 
-            Literatura que emociona a adultos y despierta la imaginaciÃ³n infantil.
+            Literatura que emociona a adultos y despierta la imaginación infantil.
           </p>
           
           <div className="fade-in-up flex flex-col sm:flex-row gap-4 justify-center" style={{ animationDelay: "0.6s" }}>
@@ -79,7 +79,7 @@ export default function HomePage() {
               </svg>
             </Link>
             <Link href="#coleccion-teatro" className="btn-premium btn-outline">
-              Explorar colecciÃ³n
+              Explorar colección
             </Link>
           </div>
         </div>
