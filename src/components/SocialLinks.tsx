@@ -52,7 +52,7 @@ export default function SocialLinks({ className = '' }: { className?: string }) 
   ]
 
   return (
-    <div className={\lex gap-4 \\}>
+    <div className={`flex gap-4 ${className}`}>
       {links.map((link) => (
         <Link
           key={link.name}
