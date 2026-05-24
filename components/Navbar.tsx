@@ -58,7 +58,7 @@ export default function Navbar() {
                   href={item.href}
                   className={`text-sm font-medium transition-colors py-2 flex items-center gap-1 ${
                     item.name === "BOOKAI"
-                      ? "text-premium-gold font-bold px-3 py-1 bg-premium-gold/10 rounded-full border border-premium-gold/30 hover:bg-premium-gold/20 shadow-[0_0_15px_rgba(212,175,55,0.3)]"
+                      ? "bg-premium-gold text-black px-4 py-1.5 rounded-lg font-bold shadow-lg border-2 border-black hover:bg-[#d4af37]/90"
                       : "text-stone-600 hover:text-premium-gold"
                   }`}
                 >
@@ -117,7 +117,7 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className={`block transition py-2 font-medium ${
                     item.name === "BOOKAI"
-                      ? "text-premium-gold font-bold bg-premium-gold/10 px-3 rounded-lg border border-premium-gold/30"
+                      ? "bg-premium-gold text-black px-4 py-2 rounded-lg font-bold shadow-lg border-2 border-black mt-2 mb-2 inline-block hover:bg-[#d4af37]/90"
                       : "text-stone-600 hover:text-premium-gold"
                   }`}
                 >

@@ -39,9 +39,21 @@ export default function HomePage() {
     <main className="min-h-screen bg-premium-cream">
       
       {/* === HERO CINEMATICO PREMIUM (RESTAURADO) === */}
-      <section className="hero-premium">
+      <section className="hero-premium relative min-h-[90vh]">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/banner/Banner-Facebook.webp"
+            alt="El Bosque que Calla"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
         {/* Particulas doradas */}
-        <div className="hero-particles">
+        <div className="hero-particles z-10">
           {[...Array(30)].map((_, i) => (
             <div
               key={i}
@@ -57,21 +69,12 @@ export default function HomePage() {
         </div>
 
         {/* Contenido */}
-        <div ref={heroRef} className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <span className="fade-in-up inline-block px-6 py-2 bg-premium-gold/10 border border-premium-gold/30 rounded-full text-premium-gold text-sm font-bold tracking-widest uppercase mb-6">
-            Nueva Colección 2026
-          </span>
-          
-          <h1 className="fade-in-up text-white font-bold drop-shadow-lg mb-6" style={{ animationDelay: "0.2s" }}>
+        <div ref={heroRef} className="absolute left-1/2 -translate-x-1/2 top-4 w-full z-20 text-center max-w-5xl mx-auto px-4 flex flex-col items-center gap-6">
+          <h1 className="fade-in-up text-white font-bold drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] text-6xl md:text-7xl lg:text-8xl" style={{ animationDelay: "0.2s" }}>
             El Bosque que <span className="text-gradient-gold">Calla</span>
           </h1>
           
-          <p className="fade-in-up text-lg md:text-xl text-white/90 max-w-3xl drop-shadow mx-auto mb-10 leading-relaxed" style={{ animationDelay: "0.4s" }}>
-            Historias que exploran la memoria, el destino y las decisiones que cambian una vida. 
-            Literatura que emociona a adultos y despierta la imaginación infantil.
-          </p>
-          
-          <div className="fade-in-up flex flex-col sm:flex-row gap-4 justify-center" style={{ animationDelay: "0.6s" }}>
+          <div className="fade-in-up flex flex-col sm:flex-row gap-4 justify-center" style={{ animationDelay: "0.4s" }}>
             <Link href="/libros" className="btn-premium">
               Descubre mis obras
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,8 +86,60 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+      </section>
 
+      {/* === SECCIÓN BOOKAI PUBLISHER === */}
+      <section className="py-20 bg-white">
+        <div className="container-premium max-w-5xl mx-auto reveal-on-scroll text-center">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-black mb-6">
+            Publica tu libro en 30 días <span className="text-premium-gold">con Inteligencia Artificial</span>
+          </h2>
 
+          <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
+            BookAI Publisher es la plataforma que usan más de 150 autores para escribir, maquetar y publicar sus libros en Amazon KDP. 
+            Nuestra IA te guía paso a paso: desde la idea inicial hasta tu primer libro publicado. 
+            <strong className="text-black"> Sin experiencia previa. Sin complicaciones.</strong>
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="text-center p-6 bg-white rounded-xl border border-premium-gold/30 shadow-sm">
+              <div className="text-4xl mb-3">✍️</div>
+              <h3 className="font-bold text-black mb-2">Escribe</h3>
+              <p className="text-gray-600 text-sm">La IA genera contenido basado en tus ideas y estilo</p>
+            </div>
+            <div className="text-center p-6 bg-white rounded-xl border border-premium-gold/30 shadow-sm">
+              <div className="text-4xl mb-3">📖</div>
+              <h3 className="font-bold text-black mb-2">Maqueta</h3>
+              <p className="text-gray-600 text-sm">Diseño profesional automático para Amazon KDP</p>
+            </div>
+            <div className="text-center p-6 bg-white rounded-xl border border-premium-gold/30 shadow-sm">
+              <div className="text-4xl mb-3">🚀</div>
+              <h3 className="font-bold text-black mb-2">Publica</h3>
+              <p className="text-gray-600 text-sm">Sube directamente a Amazon y empieza a vender</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="https://bookai-publisher-nextjs-6l1afn82v-ramondelpozos-projects.vercel.app" 
+              target="_blank"
+              className="inline-flex items-center justify-center px-8 py-4 bg-black text-premium-gold font-bold rounded-full hover:bg-gray-900 transition-all shadow-[0_0_30px_rgba(0,0,0,0.3)] text-lg border-2 border-black"
+            >
+              Probar BOOKAI Gratis →
+            </Link>
+            <Link 
+              href="https://bookai-publisher-nextjs-6l1afn82v-ramondelpozos-projects.vercel.app" 
+              target="_blank"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-black text-black font-bold rounded-full hover:bg-black hover:text-white transition-all text-lg"
+            >
+              Ver cómo funciona
+            </Link>
+          </div>
+
+          <p className="text-center text-sm text-gray-600 mt-6">
+            ✅ Sin tarjeta de crédito &nbsp;•&nbsp; ✅ 7 días gratis &nbsp;•&nbsp; ✅ Cancela cuando quieras
+          </p>
+        </div>
       </section>
 
       {/* === WIDGET COLECCION LITERARIA (TEATRO) === */}
@@ -245,25 +300,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* === SECCIÓN BOOKAI PUBLISHER === */}
-      <section className="py-20 bg-stone-100">
-        <div className="container-premium max-w-5xl mx-auto text-center reveal-on-scroll">
-          <span className="badge-premium mb-4 inline-block text-premium-gold border-premium-gold/30 bg-premium-gold/10">
-            Innovación Editorial
-          </span>
-          <h2 className="text-4xl font-serif font-bold text-premium-charcoal mb-6">
-            BOOKAI Publisher
-          </h2>
-          <p className="text-stone-600 text-lg mb-10 max-w-3xl mx-auto">
-            Descubre la nueva frontera de la literatura interactiva. Una plataforma donde las historias cobran vida y el lector se convierte en el protagonista de su propia aventura.
-          </p>
-          <Link href="/bookai" className="btn-premium">
-            Descubrir BOOKAI
-          </Link>
-        </div>
-      </section>
 
-      {/* === SOBRE EL AUTOR === */}
       <section className="py-20 bg-stone-900 text-white">
         <div className="container-premium grid md:grid-cols-2 gap-12 items-center">
           <div className="reveal-on-scroll relative">
