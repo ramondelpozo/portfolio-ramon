@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -22,6 +22,10 @@ export default function Navbar() {
       name: "Libros",
       href: "/libros",
       submenu: [{ name: "Literatura Infantil", href: "/libros/literatura-infantil" }],
+    },
+    {
+      name: "BOOKAI",
+      href: "/bookai",
     },
     {
       name: "Blog",
@@ -52,7 +56,11 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className="text-sm font-medium text-stone-600 hover:text-premium-gold transition-colors py-2 flex items-center gap-1"
+                  className={`text-sm font-medium transition-colors py-2 flex items-center gap-1 ${
+                    item.name === "BOOKAI"
+                      ? "text-premium-gold font-bold px-3 py-1 bg-premium-gold/10 rounded-full border border-premium-gold/30 hover:bg-premium-gold/20 shadow-[0_0_15px_rgba(212,175,55,0.3)]"
+                      : "text-stone-600 hover:text-premium-gold"
+                  }`}
                 >
                   {item.name}
                   {item.submenu && (
@@ -107,7 +115,11 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block text-stone-600 hover:text-premium-gold transition py-2 font-medium"
+                  className={`block transition py-2 font-medium ${
+                    item.name === "BOOKAI"
+                      ? "text-premium-gold font-bold bg-premium-gold/10 px-3 rounded-lg border border-premium-gold/30"
+                      : "text-stone-600 hover:text-premium-gold"
+                  }`}
                 >
                   {item.name}
                 </Link>

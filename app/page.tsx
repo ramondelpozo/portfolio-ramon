@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
@@ -84,27 +84,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* === PORTADA FLOTANTE A LA DERECHA === */}
-        <div className="absolute bottom-16 right-16 hidden xl:block floating z-20">
-          <div
-            className="relative w-48 h-72 rounded-lg shadow-2xl border-2 border-premium-gold/30 overflow-hidden"
-            style={{ transform: "perspective(1000px) rotateY(10deg) rotateX(3deg)" }}
-          >
-            <Image
-              src="/libros/el-bosque-que-calla.png"
-              alt="El Bosque que Calla - Proximamente"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute top-3 left-3 right-3 text-center">
-              <span className="inline-block px-3 py-1 bg-premium-gold text-premium-black text-xs font-bold rounded-full shadow-md">
-                PROXIMAMENTE
-              </span>
-            </div>
-          </div>
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-40 h-6 bg-black/40 rounded-full blur-2xl" />
-        </div>
+
       </section>
 
       {/* === WIDGET COLECCION LITERARIA (TEATRO) === */}
@@ -119,10 +99,10 @@ export default function HomePage() {
             Novedades
           </span>
           <h2 className="text-xl md:text-2xl font-normal text-[#1a1714] mb-2">
-            Ultimos libros
+            Últimos libros
           </h2>
           <p className="text-[0.9rem] text-[#7a7470] mb-4 max-w-xl mx-auto">
-            Incluye tanto libros ya disponibles como titulos que se lanzaran proximamente.
+            Incluye tanto libros ya disponibles como títulos que se lanzarán próximamente.
           </p>
           <Link
             href="/libros"
@@ -147,18 +127,18 @@ export default function HomePage() {
                     className="object-cover"
                   />
                   <span className="absolute top-2 left-2 text-[0.58rem] font-bold uppercase tracking-[0.08em] px-2 py-0.5 rounded-full bg-white/90 text-[#e11d48] border border-[rgba(225,29,72,0.3)]">
-                    Thriller tecnologico
+                    Thriller tecnológico
                   </span>
                 </div>
                 <div className="py-3.5 flex flex-col gap-0.5">
                   <p className="text-base font-extrabold text-[#1a1714] leading-tight uppercase tracking-[0.04em]">
-                    Limite de control
+                    Límite de control
                   </p>
                   <p className="text-[0.72rem] text-[#7a7470] italic leading-tight">
-                    Hasta donde ayudar sin decidir
+                    Hasta dónde ayudar sin decidir
                   </p>
                   <p className="text-[0.75rem] text-[#b0a89f] leading-tight mt-0.5">
-                    En un Madrid donde cada segundo puede predecirse, Alex Vega se enfrenta a la linea mas dificil: salvar vidas sin perder su libertad.
+                    En un Madrid donde cada segundo puede predecirse, Alex Vega se enfrenta a la línea más difícil: salvar vidas sin perder su libertad.
                   </p>
                   <a
                     href="https://www.amazon.es/L%C3%ADmite-Control-Hasta-ayudar-decidir/dp/B0GW895LSQ"
@@ -175,7 +155,7 @@ export default function HomePage() {
 
           {/* Columna 2: Proximamente */}
           <div className="text-center max-w-[520px]">
-            <h3 className="text-base font-semibold text-[#1a1714] mb-3">Proximamente</h3>
+            <h3 className="text-base font-semibold text-[#1a1714] mb-3">Próximamente</h3>
             <div className="flex justify-center">
               <div className="max-w-[300px] w-full">
                 <div className="relative w-full h-[480px] overflow-hidden cursor-zoom-in bg-[#efecea] rounded-xl">
@@ -186,7 +166,7 @@ export default function HomePage() {
                     className="object-cover"
                   />
                   <span className="absolute top-2 left-2 text-[0.58rem] font-bold uppercase tracking-[0.08em] px-2 py-0.5 rounded-full bg-white/90 text-[#e11d48] border border-[rgba(225,29,72,0.3)]">
-                    Thriller historico
+                    Thriller histórico
                   </span>
                 </div>
                 <div className="py-3.5 flex flex-col gap-0.5">
@@ -194,10 +174,10 @@ export default function HomePage() {
                     El bosque que calla
                   </p>
                   <p className="text-[0.72rem] text-[#7a7470] italic leading-tight">
-                    La verdad que nadie podia decir
+                    La verdad que nadie podía decir
                   </p>
                   <p className="text-[0.75rem] text-[#b0a89f] leading-tight mt-0.5">
-                    Hubo un tiempo en que el mundo decidio no mirar. Jacobo y otros supervivientes guardan fragmentos de memoria rota.
+                    Hubo un tiempo en que el mundo decidió no mirar. Jacobo y otros supervivientes guardan fragmentos de memoria rota.
                   </p>
                   <a
                     href="https://www.amazon.es/stores/author/B0DLLJLYZR/"
@@ -205,7 +185,7 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 mt-2.5 px-3.5 py-1 rounded-full text-[0.68rem] font-bold tracking-[0.06em] uppercase no-underline border border-[rgba(225,29,72,0.4)] text-[#e11d48] bg-transparent hover:bg-[#e11d48]/10 transition-transform hover:scale-105 self-center"
                   >
-                    Proximamente
+                    Próximamente
                   </a>
                 </div>
               </div>
@@ -243,9 +223,9 @@ export default function HomePage() {
             </li>
 
             <li className="bg-stone-50 p-6 rounded-xl border border-stone-200">
-              <h5 className="font-bold text-lg text-premium-charcoal mb-2">Inmunidad Diplomatica</h5>
+              <h5 className="font-bold text-lg text-premium-charcoal mb-2">Inmunidad Diplomática</h5>
               <p className="text-stone-600 text-sm leading-relaxed mb-3">
-                Corrupcion y poder en el entorno diplomatico. Secretos, privilegios y silencios donde la justicia deja de ser igual para todos.
+                Corrupción y poder en el entorno diplomático. Secretos, privilegios y silencios donde la justicia deja de ser igual para todos.
               </p>
               <Link href="/libros/inmunidad-diplomatica" className="inline-block px-4 py-2.5 bg-[#61CE70] text-white rounded-lg font-semibold text-sm tracking-[0.2px] hover:bg-[#4fb85d] transition-all">
                 Ver libro
@@ -255,13 +235,31 @@ export default function HomePage() {
             <li className="bg-stone-50 p-6 rounded-xl border border-stone-200">
               <h5 className="font-bold text-lg text-premium-charcoal mb-2">Mascotas en el Olvido</h5>
               <p className="text-stone-600 text-sm leading-relaxed mb-3">
-                Bienestar animal, abandono y conciencia social. Una historia sobre maltrato, empatia y la posibilidad de cambiar lo que ignoramos.
+                Bienestar animal, abandono y conciencia social. Una historia sobre maltrato, empatía y la posibilidad de cambiar lo que ignoramos.
               </p>
               <Link href="/libros/mascotas-en-el-olvido" className="inline-block px-4 py-2.5 bg-[#61CE70] text-white rounded-lg font-semibold text-sm tracking-[0.2px] hover:bg-[#4fb85d] transition-all">
                 Ver libro
               </Link>
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* === SECCIÓN BOOKAI PUBLISHER === */}
+      <section className="py-20 bg-stone-100">
+        <div className="container-premium max-w-5xl mx-auto text-center reveal-on-scroll">
+          <span className="badge-premium mb-4 inline-block text-premium-gold border-premium-gold/30 bg-premium-gold/10">
+            Innovación Editorial
+          </span>
+          <h2 className="text-4xl font-serif font-bold text-premium-charcoal mb-6">
+            BOOKAI Publisher
+          </h2>
+          <p className="text-stone-600 text-lg mb-10 max-w-3xl mx-auto">
+            Descubre la nueva frontera de la literatura interactiva. Una plataforma donde las historias cobran vida y el lector se convierte en el protagonista de su propia aventura.
+          </p>
+          <Link href="/bookai" className="btn-premium">
+            Descubrir BOOKAI
+          </Link>
         </div>
       </section>
 
@@ -283,10 +281,10 @@ export default function HomePage() {
 
           <div className="reveal-on-scroll">
             <span className="badge-premium mb-4 inline-block">Sobre el autor</span>
-            <h2 className="text-4xl font-serif font-bold mt-3 mb-6">Ramon del Pozo Rott</h2>
-            <p className="text-stone-300 text-lg mb-6">Escritor de narrativa contemporanea y literatura infantil creativa.</p>
+            <h2 className="text-4xl font-serif font-bold mt-3 mb-6">Ramón del Pozo Rott</h2>
+            <p className="text-stone-300 text-lg mb-6">Escritor de narrativa contemporánea y literatura infantil creativa.</p>
             <p className="text-stone-300 leading-relaxed mb-8 text-white font-bold drop-shadow-lg">
-              Mis historias nacen de una idea simple: <strong className="text-white">los libros no solo se leen, se viven</strong>. Cada obra busca dejar una sensacion, una reflexion o una chispa de imaginacion que permanezca incluso despues de cerrar la ultima pagina.
+              Mis historias nacen de una idea simple: <strong className="text-white">los libros no solo se leen, se viven</strong>. Cada obra busca dejar una sensación, una reflexión o una chispa de imaginación que permanezca incluso después de cerrar la última página.
             </p>
             <Link href="/biografia" className="btn-premium">
               Conocer mi historia
@@ -302,10 +300,10 @@ export default function HomePage() {
       <section className="py-24 bg-premium-black text-center px-4">
         <div className="max-w-3xl mx-auto reveal-on-scroll">
           <h2 className="text-4xl font-serif font-bold text-white mb-6 text-white font-bold drop-shadow-lg">
-            Listo para entrar en el universo?
+            ¿Listo para entrar en el universo?
           </h2>
           <p className="text-stone-400 mb-10 text-lg">
-            Cada libro es una puerta a una nueva experiencia. Elige tu proxima aventura.
+            Cada libro es una puerta a una nueva experiencia. Elige tu próxima aventura.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/libros" className="btn-premium">
