@@ -1,13 +1,25 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ColeccionLiteraria from "@/components/ColeccionLiteraria";
 
+// Interfaz para tipar las partículas doradas
+interface Particle {
+  id: number;
+  left: string;
+  top: string;
+  delay: string;
+  duration: string;
+}
+
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
+  // Estado para guardar las partículas calculadas en el cliente
+  const [particles, setParticles] = useState<Particle[]>([]);
 
+  // Efecto para el efecto Parallax del Hero (solo actúa si el ref existe)
   useEffect(() => {
     const handleScroll = () => {
       if (heroRef.current) {
@@ -19,6 +31,7 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Efecto para el Intersection Observer (animaciones al hacer scroll)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -35,53 +48,72 @@ export default function HomePage() {
     return () => observer.disconnect();
   }, []);
 
+  // Solución al Hydration Mismatch: valores aleatorios generados tras el montaje en navegador
+  useEffect(() => {
+    const generatedParticles = Array.from({ length: 30 }).map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 5}s`,
+      duration: `${8 + Math.random() * 4}s`,
+    }));
+    setParticles(generatedParticles);
+  }, []);
+
   return (
     <main className="min-h-screen bg-premium-cream">
       
-      {/* === HERO CINEMATICO PREMIUM (RESTAURADO) === */}
-      <section className="hero-premium relative min-h-[90vh]">
+      {/* === HERO CINEMATICO PREMIUM === */}
+      <section className="hero-premium relative min-h-[85vh] sm:min-h-[90vh] bg-stone-950 overflow-hidden flex items-center justify-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/banner/Banner-Facebook.webp"
             alt="El Bosque que Calla"
             fill
-            className="object-cover"
+            sizes="100vw"
+            className="object-cover opacity-20 sm:opacity-100 blur-md sm:blur-0 transition-all duration-500"
             priority
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          {/* Capa de degradado extra para fundir el fondo en móvil con el negro premium */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-stone-950 sm:bg-black/40"></div>
         </div>
 
-        {/* Particulas doradas */}
+        {/* Partículas doradas seguras contra Hydration Errors */}
         <div className="hero-particles z-10">
-          {[...Array(30)].map((_, i) => (
+          {particles.map((particle) => (
             <div
-              key={i}
+              key={particle.id}
               className="particle"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${8 + Math.random() * 4}s`
+                left: particle.left,
+                top: particle.top,
+                animationDelay: particle.delay,
+                animationDuration: particle.duration
               }}
             />
           ))}
         </div>
 
-        {/* Contenido */}
-        <div ref={heroRef} className="absolute left-1/2 -translate-x-1/2 top-4 w-full z-20 text-center max-w-5xl mx-auto px-4 flex flex-col items-center gap-6">
-          <h1 className="fade-in-up text-white font-bold drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] text-6xl md:text-7xl lg:text-8xl" style={{ animationDelay: "0.2s" }}>
-            El Bosque que <span className="text-gradient-gold">Calla</span>
+        {/* Contenido (Corregido con Flexbox y anchos máximos controlados) */}
+        <div 
+          ref={heroRef} 
+          className="relative w-full z-20 text-center max-w-5xl mx-auto px-4 flex flex-col items-center justify-center gap-6 sm:gap-8 will-change-transform"
+        >
+          {/* Título adaptivo: text-4xl en móvil que escala hasta text-8xl en pantallas gigantes */}
+          <h1 className="fade-in-up text-white font-bold drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] text-4xl sm:text-6xl md:text-7xl lg:text-8xl w-full" style={{ animationDelay: "0.2s" }}>
+            El Bosque que <span className="text-gradient-gold block sm:inline">Calla</span>
           </h1>
           
-          <div className="fade-in-up flex flex-col sm:flex-row gap-4 justify-center" style={{ animationDelay: "0.4s" }}>
-            <Link href="/libros" className="btn-premium">
+          {/* Contenedor de botones: columna en móvil, fila en escritorio */}
+          <div className="fade-in-up flex flex-col sm:flex-row gap-4 justify-center w-full max-w-xs sm:max-w-none" style={{ animationDelay: "0.4s" }}>
+            <Link href="/libros" className="btn-premium w-full sm:w-auto justify-center">
               Descubre mis obras
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link href="#coleccion-teatro" className="btn-premium btn-outline">
+            <Link href="#coleccion-teatro" className="btn-premium btn-outline w-full sm:w-auto justify-center">
               Explorar colección
             </Link>
           </div>
@@ -128,7 +160,7 @@ export default function HomePage() {
               Probar BOOKAI Gratis →
             </Link>
             <Link 
-              href="https://bookai-publisher-nextjs-6l1afn82v-ramondelpozos-projects.vercel.app" 
+              href="https://bookai-publisher-nextjs.vercel.app/" 
               target="_blank"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-black text-black font-bold rounded-full hover:bg-black hover:text-white transition-all text-lg"
             >
@@ -179,6 +211,7 @@ export default function HomePage() {
                     src="/libros/limite-de-control.webp"
                     alt="Limite de control"
                     fill
+                    sizes="(max-width: 768px) 100vw, 300px"
                     className="object-cover"
                   />
                   <span className="absolute top-2 left-2 text-[0.58rem] font-bold uppercase tracking-[0.08em] px-2 py-0.5 rounded-full bg-white/90 text-[#e11d48] border border-[rgba(225,29,72,0.3)]">
@@ -218,6 +251,7 @@ export default function HomePage() {
                     src="/libros/el-bosque-que-calla.png"
                     alt="El bosque que calla"
                     fill
+                    sizes="(max-width: 768px) 100vw, 300px"
                     className="object-cover"
                   />
                   <span className="absolute top-2 left-2 text-[0.58rem] font-bold uppercase tracking-[0.08em] px-2 py-0.5 rounded-full bg-white/90 text-[#e11d48] border border-[rgba(225,29,72,0.3)]">
@@ -300,7 +334,7 @@ export default function HomePage() {
         </div>
       </section>
 
-
+      {/* === SOBRE EL AUTOR === */}
       <section className="py-20 bg-stone-900 text-white">
         <div className="container-premium grid md:grid-cols-2 gap-12 items-center">
           <div className="reveal-on-scroll relative">
@@ -309,6 +343,7 @@ export default function HomePage() {
                 src="/autor/autor-oficina.png"
                 alt="Ramon del Pozo Rott - Escritor"
                 fill
+                sizes="(max-width: 768px) 100vw, 448px"
                 className="object-cover object-center"
                 priority
               />
@@ -323,6 +358,7 @@ export default function HomePage() {
             <p className="text-stone-300 leading-relaxed mb-8 text-white font-bold drop-shadow-lg">
               Mis historias nacen de una idea simple: <strong className="text-white">los libros no solo se leen, se viven</strong>. Cada obra busca dejar una sensación, una reflexión o una chispa de imaginación que permanezca incluso después de cerrar la última página.
             </p>
+            {/* Corregida errata de texto en el enlace */}
             <Link href="/biografia" className="btn-premium">
               Conocer mi historia
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -355,13 +391,3 @@ export default function HomePage() {
     </main>
   );
 }
-
-
-
-
-
-
-
-
-
-
