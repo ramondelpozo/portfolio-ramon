@@ -153,7 +153,7 @@ export default function HomePage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
-              href="https://bookai-publisher-nextjs-6l1afn82v-ramondelpozos-projects.vercel.app" 
+              href="https://bookai-publisher-nextjs.vercel.app/" 
               target="_blank"
               className="inline-flex items-center justify-center px-8 py-4 bg-black text-premium-gold font-bold rounded-full hover:bg-gray-900 transition-all shadow-[0_0_30px_rgba(0,0,0,0.3)] text-lg border-2 border-black"
             >
@@ -358,7 +358,6 @@ export default function HomePage() {
             <p className="text-stone-300 leading-relaxed mb-8 text-white font-bold drop-shadow-lg">
               Mis historias nacen de una idea simple: <strong className="text-white">los libros no solo se leen, se viven</strong>. Cada obra busca dejar una sensación, una reflexión o una chispa de imaginación que permanezca incluso después de cerrar la última página.
             </p>
-            {/* Corregida errata de texto en el enlace */}
             <Link href="/biografia" className="btn-premium">
               Conocer mi historia
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
