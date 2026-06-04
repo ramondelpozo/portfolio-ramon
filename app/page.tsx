@@ -153,14 +153,14 @@ export default function HomePage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
-              href="https://bookai-publisher-nextjs.vercel.app/" 
+              href="https://editorial-ten-roan.vercel.app/" 
               target="_blank"
               className="inline-flex items-center justify-center px-8 py-4 bg-black text-premium-gold font-bold rounded-full hover:bg-gray-900 transition-all shadow-[0_0_30px_rgba(0,0,0,0.3)] text-lg border-2 border-black"
             >
               Probar BOOKAI Gratis →
             </Link>
             <Link 
-              href="https://bookai-publisher-nextjs.vercel.app/" 
+              href="https://editorial-ten-roan.vercel.app/" 
               target="_blank"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-black text-black font-bold rounded-full hover:bg-black hover:text-white transition-all text-lg"
             >

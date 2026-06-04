@@ -25,7 +25,7 @@ export default function Navbar() {
     },
     {
       name: "BOOKAI",
-      href: "https://bookai-publisher-nextjs.vercel.app/",
+      href: "https://editorial-ten-roan.vercel.app/",
       external: true,
     },
     {
