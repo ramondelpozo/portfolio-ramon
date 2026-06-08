@@ -100,6 +100,14 @@ export const BOOK_CATALOG: BookEntry[] = [
     amazon: "https://www.amazon.es/SE-VENDE-Derecho-Vivienda-Pol%C3%ADticas/dp/B0DP37DJW1",
     available: true,
   },
+  {
+    id: "refugio",
+    title: "El Último Refugio",
+    image: "/libros/El-ultimo-refugio.jpg",
+    badge: "Thriller survival",
+    amazon: "https://www.amazon.es/El-%C3%Altimo-refugio-oculto-silencioso/dp/B0FJ57N3MB",
+    available: true,
+  },
 ];
 
 export const AVAILABLE_BOOKS = BOOK_CATALOG.filter((book) => book.available);
