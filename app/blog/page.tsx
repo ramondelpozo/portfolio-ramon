@@ -1,5 +1,35 @@
-﻿import Link from "next/link";
+﻿import type { Metadata } from "next";
+import Link from "next/link";
 import BlogPromo from "@/components/BlogPromo";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Blog literario de Ramón del Pozo Rott",
+  description:
+    "Artículos sobre escritura, thriller, procesos creativos y BOOKIA Publisher. Reflexiones del autor de El Bosque que Calla y Límite de Control.",
+  path: "/blog",
+});
+
+const ARTICLES = [
+  {
+    href: "/blog/bookia-publisher-primer-libro",
+    date: "8 Junio 2026",
+    title: "Escribe tu primer libro con BOOKIA Publisher",
+    excerpt: "Prólogo, sinopsis y 3 capítulos gratis. El ecosistema literario para nuevos autores.",
+  },
+  {
+    href: "/blog/el-proceso-creativo-el-bosque-que-calla",
+    date: "15 Enero 2026",
+    title: 'El proceso creativo detrás de "El Bosque que Calla"',
+    excerpt: "Cómo una idea sencilla se transformó en una novela sobre memoria, silencio y justicia.",
+  },
+  {
+    href: "/blog/escribir-thrillers-era-digital",
+    date: "3 Diciembre 2025",
+    title: "Escribir thrillers en la era digital",
+    excerpt: "Reflexiones sobre tensión narrativa, ritmo y tecnología en el suspense contemporáneo.",
+  },
+];
 
 export default function BlogPage() {
   return (
@@ -28,32 +58,17 @@ export default function BlogPage() {
             Últimos artículos
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <article className="bg-stone-50 p-6 rounded-xl border border-stone-200 hover:shadow-premium transition-all">
-              <span className="text-premium-gold text-sm font-medium">15 Enero 2026</span>
-              <h3 className="font-serif text-xl font-bold text-premium-charcoal mt-2 mb-3">
-                El proceso creativo detrás de "El Bosque que Calla"
-              </h3>
-              <p className="text-stone-600 mb-4">
-                Cómo una idea sencilla se transformó en una novela sobre memoria, silencio y justicia.
-              </p>
-              <Link href="#" className="text-premium-gold font-medium hover:underline">
-                Leer más →
-              </Link>
-            </article>
-
-            <article className="bg-stone-50 p-6 rounded-xl border border-stone-200 hover:shadow-premium transition-all">
-              <span className="text-premium-gold text-sm font-medium">3 Diciembre 2025</span>
-              <h3 className="font-serif text-xl font-bold text-premium-charcoal mt-2 mb-3">
-                Escribir thrillers en la era digital
-              </h3>
-              <p className="text-stone-600 mb-4">
-                Reflexiones sobre cómo adaptar el género del suspense a los tiempos modernos.
-              </p>
-              <Link href="#" className="text-premium-gold font-medium hover:underline">
-                Leer más →
-              </Link>
-            </article>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {ARTICLES.map((article) => (
+              <article key={article.href} className="bg-stone-50 p-6 rounded-xl border border-stone-200 hover:shadow-premium transition-all">
+                <span className="text-premium-gold text-sm font-medium">{article.date}</span>
+                <h3 className="font-serif text-xl font-bold text-premium-charcoal mt-2 mb-3">{article.title}</h3>
+                <p className="text-stone-600 mb-4">{article.excerpt}</p>
+                <Link href={article.href} className="text-premium-gold font-medium hover:underline">
+                  Leer más →
+                </Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>

@@ -1,10 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* Opciones de configuración */
   devIndicators: {
-    appIsrStatus: false, // Oculta el indicador de estado dinámico/estático
-    buildActivity: false, // Oculta la burbuja cuando está compilando
+    appIsrStatus: false,
+    buildActivity: false,
   },
+  images: {
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+  },
+  poweredByHeader: false,
+  compress: true,
 };
 
 module.exports = nextConfig;

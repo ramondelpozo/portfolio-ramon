@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { BOOKIA_URL } from "@/lib/seo";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,8 +25,8 @@ export default function Navbar() {
       submenu: [{ name: "Literatura Infantil", href: "/libros/literatura-infantil" }],
     },
     {
-      name: "BOOKAI",
-      href: "https://editorial-ten-roan.vercel.app/",
+      name: "BOOKIA",
+      href: BOOKIA_URL,
       external: true,
     },
     {
@@ -61,7 +62,7 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`text-sm font-medium transition-colors py-2 flex items-center gap-1 ${
-                      item.name === "BOOKAI"
+                      item.name === "BOOKIA"
                         ? "bg-premium-gold text-black px-4 py-1.5 rounded-lg font-bold shadow-lg border-2 border-black hover:bg-[#d4af37]/90"
                         : "text-stone-600 hover:text-premium-gold"
                     }`}
@@ -80,7 +81,7 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     className={`text-sm font-medium transition-colors py-2 flex items-center gap-1 ${
-                      item.name === "BOOKAI"
+                      item.name === "BOOKIA"
                         ? "bg-premium-gold text-black px-4 py-1.5 rounded-lg font-bold shadow-lg border-2 border-black hover:bg-[#d4af37]/90"
                         : "text-stone-600 hover:text-premium-gold"
                     }`}
@@ -143,7 +144,7 @@ export default function Navbar() {
                     rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
                     className={`block transition py-2 font-medium ${
-                      item.name === "BOOKAI"
+                      item.name === "BOOKIA"
                         ? "bg-premium-gold text-black px-4 py-2 rounded-lg font-bold shadow-lg border-2 border-black mt-2 mb-2 inline-block hover:bg-[#d4af37]/90"
                         : "text-stone-600 hover:text-premium-gold"
                     }`}
@@ -155,7 +156,7 @@ export default function Navbar() {
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
                     className={`block transition py-2 font-medium ${
-                      item.name === "BOOKAI"
+                      item.name === "BOOKIA"
                         ? "bg-premium-gold text-black px-4 py-2 rounded-lg font-bold shadow-lg border-2 border-black mt-2 mb-2 inline-block hover:bg-[#d4af37]/90"
                         : "text-stone-600 hover:text-premium-gold"
                     }`}
