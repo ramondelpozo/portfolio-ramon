@@ -3,6 +3,7 @@ import { Playfair_Display, Inter, Cormorant_Garamond, IM_Fell_English } from 'ne
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import FloatingActions from '@/components/FloatingActions';
 import {
   AUTHOR,
   DEFAULT_KEYWORDS,
@@ -109,6 +110,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        <FloatingActions />
       </body>
     </html>
   );

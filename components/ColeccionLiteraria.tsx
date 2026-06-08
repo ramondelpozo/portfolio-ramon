@@ -63,6 +63,8 @@ const CL_BOOKS: Book[] = [
 export default function ColeccionLiteraria() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [curtainsOpen, setCurtainsOpen] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -80,8 +82,29 @@ export default function ColeccionLiteraria() {
     document.body.style.overflow = "";
   };
 
-  // Efecto: partículas de polvo en canvas
+  // Abrir telón al llegar a la sección (scroll)
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCurtainsOpen(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  // Efecto: partículas de polvo en canvas (cuando abre el telón)
+  useEffect(() => {
+    if (!curtainsOpen) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -139,15 +162,16 @@ export default function ColeccionLiteraria() {
       animationId = requestAnimationFrame(draw);
     };
 
-    // Iniciar animación con retraso para que coincida con la apertura de telones
-    const timeout = setTimeout(() => { draw(); }, 2500);
+    const timeout = setTimeout(() => {
+      draw();
+    }, 2500);
 
     return () => {
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(animationId);
       clearTimeout(timeout);
     };
-  }, []);
+  }, [curtainsOpen]);
 
   // Efecto: cerrar modal con Escape
   useEffect(() => {
@@ -214,8 +238,16 @@ export default function ColeccionLiteraria() {
           content: ''; position: absolute; top: 0; left: 0; width: 40px; height: 100%;
           background: linear-gradient(to right, rgba(0,0,0,0.5), transparent);
         }
-        #coleccion-literaria .cl-curtain-left { animation: clCurtainL 2.2s cubic-bezier(0.25,0.1,0.25,1) 0.5s forwards; }
-        #coleccion-literaria .cl-curtain-right { animation: clCurtainR 2.2s cubic-bezier(0.25,0.1,0.25,1) 0.5s forwards; }
+        #coleccion-literaria .cl-curtain-left,
+        #coleccion-literaria .cl-curtain-right {
+          transform: translateX(0);
+        }
+        #coleccion-literaria.cl-open .cl-curtain-left {
+          animation: clCurtainL 2.2s cubic-bezier(0.25,0.1,0.25,1) 0.35s forwards;
+        }
+        #coleccion-literaria.cl-open .cl-curtain-right {
+          animation: clCurtainR 2.2s cubic-bezier(0.25,0.1,0.25,1) 0.35s forwards;
+        }
         @keyframes clCurtainL { 0% { transform: translateX(0); } 100% { transform: translateX(-88%); } }
         @keyframes clCurtainR { 0% { transform: translateX(0); } 100% { transform: translateX(88%); } }
         #coleccion-literaria .cl-fringe {
@@ -233,7 +265,10 @@ export default function ColeccionLiteraria() {
         }
         #coleccion-literaria .cl-marquee {
           position: relative; z-index: 5; text-align: center;
-          padding: 60px 20px 20px; animation: clFadeDown 1.2s ease 2.4s both;
+          padding: 60px 20px 20px; opacity: 0; transform: translateY(-25px);
+        }
+        #coleccion-literaria.cl-open .cl-marquee {
+          animation: clFadeDown 1.2s ease 2.4s both;
         }
         @keyframes clFadeDown { from { opacity: 0; transform: translateY(-25px); } to { opacity: 1; transform: translateY(0); } }
         #coleccion-literaria .cl-eyebrow {
@@ -258,7 +293,10 @@ export default function ColeccionLiteraria() {
         }
         #coleccion-literaria .cl-gallery-wrapper {
           position: relative; z-index: 4; width: 100%;
-          padding: 20px 0 80px; animation: clFadeUp 1.2s ease 2.8s both;
+          padding: 20px 0 80px; opacity: 0; transform: translateY(35px);
+        }
+        #coleccion-literaria.cl-open .cl-gallery-wrapper {
+          animation: clFadeUp 1.2s ease 2.8s both;
         }
         @keyframes clFadeUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
         #coleccion-literaria .cl-track {
@@ -486,7 +524,11 @@ export default function ColeccionLiteraria() {
       `}</style>
 
       {/* Widget principal */}
-      <section id="coleccion-literaria">
+      <section
+        id="coleccion-literaria"
+        ref={sectionRef}
+        className={curtainsOpen ? "cl-open" : ""}
+      >
         {/* Fondo teatro */}
         <div className="cl-stage-bg" />
 
