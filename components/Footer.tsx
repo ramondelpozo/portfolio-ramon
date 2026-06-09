@@ -89,7 +89,7 @@ export default function Footer() {
               <li><Link href="/biografia" className="text-stone-400 hover:text-premium-gold transition-colors">Biografía</Link></li>
               <li><Link href="/blog" className="text-stone-400 hover:text-premium-gold transition-colors">Blog</Link></li>
               <li><Link href="/libros" className="text-stone-400 hover:text-premium-gold transition-colors">Tienda / Libros</Link></li>
-              <li><a href={BOOKIA_URL} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-premium-gold transition-colors">BOOKIA Publisher</a></li>
+              <li><a href={BOOKIA_URL} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-premium-gold transition-colors">BOOKIA</a></li>
               <li><a href={AMAZON_AUTHOR_URL} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-premium-gold transition-colors">Amazon Autor</a></li>
               <li><Link href="/contacto" className="text-stone-400 hover:text-premium-gold transition-colors">Contacto</Link></li>
             </ul>

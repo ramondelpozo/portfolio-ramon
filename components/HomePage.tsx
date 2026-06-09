@@ -7,6 +7,7 @@ import AvailableBooksGrid from "@/components/AvailableBooksGrid";
 import ColeccionLiteraria from "@/components/ColeccionLiteraria";
 import EcosystemBar from "@/components/EcosystemBar";
 import { BOOKIA_URL } from "@/lib/seo";
+import { BOOKIA_NAME, ECOSYSTEM } from "@/lib/brand";
 
 interface Particle {
   id: number;
@@ -121,9 +122,14 @@ export default function HomePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link href="#bookia-publisher" className="btn-premium btn-outline w-full sm:w-auto justify-center border-amber-500/50 text-amber-300 hover:text-amber-200">
-              Crear con BOOKIA
-            </Link>
+            <a
+              href={BOOKIA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-premium btn-outline w-full sm:w-auto justify-center border-amber-500/50 text-amber-300 hover:text-amber-200"
+            >
+              Crear con {BOOKIA_NAME}
+            </a>
           </div>
         </div>
       </section>
@@ -131,7 +137,7 @@ export default function HomePage() {
       <EcosystemBar />
 
       <section
-        id="bookia-publisher"
+        id="bookia"
         className="py-20 bg-gradient-to-b from-[#fcfbfa] via-white to-amber-50/40"
         aria-labelledby="bookia-heading"
       >
@@ -140,15 +146,16 @@ export default function HomePage() {
             <div className="flex items-center justify-center gap-3 mb-5">
               <Image
                 src="/bookia/logo.png"
-                alt="BOOKIA Publisher"
+                alt={BOOKIA_NAME}
                 width={48}
                 height={48}
                 className="rounded-lg border border-amber-500/30 shadow-sm"
               />
               <span className="text-xs font-black tracking-[0.25em] uppercase text-amber-600">
-                BOOKIA Publisher
+                {BOOKIA_NAME}
               </span>
             </div>
+            <p className="text-sm text-slate-500 mb-4">{ECOSYSTEM.bookiaMeaning}</p>
 
             <h2
               id="bookia-heading"
@@ -156,7 +163,7 @@ export default function HomePage() {
             >
               Tienes una historia dentro.{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-600">
-                BOOKIA Publisher la saca al mundo.
+                {BOOKIA_NAME} la saca al mundo.
               </span>
             </h2>
 
@@ -170,7 +177,7 @@ export default function HomePage() {
           <div className="relative max-w-4xl mx-auto mb-12 rounded-3xl overflow-hidden border border-slate-900/10 shadow-2xl bg-slate-950 p-1.5">
             <Image
               src="/bookia/hero-all.png"
-              alt="BOOKIA Publisher — plataforma para escribir y publicar tu libro, creada por Ramón del Pozo Rott"
+              alt={`${BOOKIA_NAME} — plataforma para escribir y publicar tu libro, creada por Ramón del Pozo Rott`}
               width={1200}
               height={675}
               className="w-full h-auto rounded-2xl"

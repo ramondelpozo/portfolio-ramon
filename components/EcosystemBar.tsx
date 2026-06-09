@@ -6,13 +6,13 @@ export default function EcosystemBar() {
   return (
     <section
       className="border-y border-amber-500/20 bg-gradient-to-r from-stone-950 via-slate-900 to-stone-950 text-white"
-      aria-label="Ecosistema literario Ramón del Pozo Rott y BOOKIA Publisher"
+      aria-label={`Ecosistema literario Ramón del Pozo Rott y ${ECOSYSTEM.bookiaName}`}
     >
       <div className="container-premium py-4 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3 text-center md:text-left">
           <Image
             src="/bookia/logo.png"
-            alt="Logo BOOKIA Publisher"
+            alt={`Logo ${ECOSYSTEM.bookiaName}`}
             width={36}
             height={36}
             className="rounded-md border border-amber-500/30"

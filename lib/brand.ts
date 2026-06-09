@@ -1,10 +1,14 @@
 import { BOOKIA_URL, SITE_NAME, SITE_URL } from "@/lib/seo";
 
+/** Marca editorial: Libro + Inteligencia Artificial */
+export const BOOKIA_NAME = "BOOKIA";
+
 export const ECOSYSTEM = {
   author: SITE_NAME,
   authorUrl: SITE_URL,
-  bookiaName: "BOOKIA Publisher",
+  bookiaName: BOOKIA_NAME,
   bookiaUrl: BOOKIA_URL,
+  bookiaMeaning: "Libro + Inteligencia Artificial",
   tagline: "Leer historias que importan. Escribir la tuya con BOOKIA.",
 } as const;
 

@@ -6,7 +6,7 @@ import { BOOKIA_URL, SITE_NAME, SITE_URL, absoluteUrl, createPageMetadata } from
 export const metadata: Metadata = createPageMetadata({
   title: "Escribir thrillers en la era digital",
   description:
-    "Reflexiones de Ramón del Pozo Rott sobre tensión narrativa, ritmo y tecnología en novelas como Límite de Control y la herramienta BOOKIA Publisher.",
+    "Reflexiones de Ramón del Pozo Rott sobre tensión narrativa, ritmo y tecnología en novelas como Límite de Control y la herramienta BOOKIA.",
   path: "/blog/escribir-thrillers-era-digital",
   keywords: [
     "escribir thriller",
@@ -55,7 +55,7 @@ export default function BlogPostThrillersPage() {
         <p className="text-stone-700 leading-relaxed mb-6">
           La era digital también cambia cómo escribimos. Herramientas como{" "}
           <a href={BOOKIA_URL} className="text-amber-700 font-semibold hover:underline" target="_blank" rel="noopener noreferrer">
-            BOOKIA Publisher
+            BOOKIA
           </a>{" "}
           no sustituyen la voz del autor: ordenan el proceso (prólogo, sinopsis, capítulos) para que la historia salga al mundo con
           método, no con caos.

@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Blog literario de Ramón del Pozo Rott",
   description:
-    "Artículos sobre escritura, thriller, procesos creativos y BOOKIA Publisher. Reflexiones del autor de El Bosque que Calla y Límite de Control.",
+    "Artículos sobre escritura, thriller, procesos creativos y BOOKIA. Reflexiones del autor de El Bosque que Calla y Límite de Control.",
   path: "/blog",
 });
 
@@ -14,7 +14,7 @@ const ARTICLES = [
   {
     href: "/blog/bookia-publisher-primer-libro",
     date: "8 Junio 2026",
-    title: "Escribe tu primer libro con BOOKIA Publisher",
+    title: "Escribe tu primer libro con BOOKIA",
     excerpt: "Prólogo, sinopsis y 3 capítulos gratis. El ecosistema literario para nuevos autores.",
   },
   {

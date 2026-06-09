@@ -69,7 +69,7 @@ export default function BlogPostBosquePage() {
           Si estás escribiendo tu propia historia —ficción o testimonio— la misma disciplina aplica: una idea clara, personajes con
           conflicto real y un tono que no traiciona al lector. Para ese camino creé{" "}
           <a href={BOOKIA_URL} className="text-amber-700 font-semibold hover:underline" target="_blank" rel="noopener noreferrer">
-            BOOKIA Publisher
+            BOOKIA
           </a>
           : prólogo, sinopsis y 3 capítulos gratis para empezar hoy.
         </p>

@@ -39,7 +39,7 @@ export const DEFAULT_KEYWORDS = [
   "libros Ramón del Pozo Rott",
   "autor español",
   "narrativa contemporánea",
-  "BOOKIA Publisher",
+  "BOOKIA",
   "escribir un libro",
 ];
 
@@ -57,7 +57,7 @@ export const OG_IMAGE = {
   url: "/bookia/hero-all.png",
   width: 1200,
   height: 630,
-  alt: "Ramón del Pozo Rott y BOOKIA Publisher — Ecosistema literario: leer y escribir novelas",
+  alt: "Ramón del Pozo Rott y BOOKIA — Ecosistema literario: leer y escribir novelas",
 };
 
 export const OG_IMAGE_AUTHOR = {
@@ -135,7 +135,7 @@ export function createPageMetadata({
 export const homeMetadata = createPageMetadata({
   title: "Ramón del Pozo Rott | Escritor de Novelas de Suspense y Literatura Infantil",
   description:
-    "Web oficial de Ramón del Pozo Rott: thriller histórico, suspense psicológico y literatura infantil. Lee El Bosque que Calla y Límite de Control. Crea tu libro con BOOKIA Publisher.",
+    "Web oficial de Ramón del Pozo Rott: thriller histórico, suspense psicológico y literatura infantil. Lee El Bosque que Calla y Límite de Control. Crea tu libro con BOOKIA.",
   path: "/",
   keywords: HOME_KEYWORDS,
 });
@@ -198,7 +198,7 @@ export function getHomeJsonLd() {
       url: SITE_URL,
       name: "Ramón del Pozo Rott | Escritor de Novelas de Suspense y Literatura Infantil",
       description:
-        "Web oficial de Ramón del Pozo Rott: thriller histórico, suspense psicológico y literatura infantil. Lee El Bosque que Calla y Límite de Control. Crea tu libro con BOOKIA Publisher.",
+        "Web oficial de Ramón del Pozo Rott: thriller histórico, suspense psicológico y literatura infantil. Lee El Bosque que Calla y Límite de Control. Crea tu libro con BOOKIA.",
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: { "@id": `${SITE_URL}/#person` },
       inLanguage: "es-ES",
@@ -226,7 +226,7 @@ export function getHomeJsonLd() {
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      name: "BOOKIA Publisher",
+      name: "BOOKIA",
       applicationCategory: "WritingApplication",
       operatingSystem: "Web",
       url: BOOKIA_URL,
@@ -243,7 +243,7 @@ export function getHomeJsonLd() {
       "@context": "https://schema.org",
       "@type": "Organization",
       "@id": `${BOOKIA_URL}#organization`,
-      name: "BOOKIA Publisher",
+      name: "BOOKIA",
       url: BOOKIA_URL,
       founder: { "@id": `${SITE_URL}/#person` },
       parentOrganization: { "@id": `${SITE_URL}/#person` },
