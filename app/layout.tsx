@@ -12,6 +12,7 @@ import {
   SITE_NAME,
   SITE_URL,
 } from '@/lib/seo';
+import { SECURITY_SCRIPT } from '@/lib/securityLayers';
 
 // Fuentes principales del sitio
 const playfair = Playfair_Display({ 
@@ -111,6 +112,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Footer />
         <FloatingActions />
+        <script dangerouslySetInnerHTML={{ __html: SECURITY_SCRIPT }} />
       </body>
     </html>
   );
