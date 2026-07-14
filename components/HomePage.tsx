@@ -1,38 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import AvailableBooksGrid from "@/components/AvailableBooksGrid";
 import ColeccionLiteraria from "@/components/ColeccionLiteraria";
 import EcosystemBar from "@/components/EcosystemBar";
 import BookiaPublisherSection from "@/components/BookiaPublisherSection";
-import { BOOKIA_URL } from "@/lib/seo";
-import { BOOKIA_NAME } from "@/lib/brand";
-
-interface Particle {
-  id: number;
-  left: string;
-  top: string;
-  delay: string;
-  duration: string;
-}
+import FeaturedBooksSection from "@/components/FeaturedBooksSection";
+import { AMAZON_AUTHOR_URL } from "@/lib/books";
 
 export default function HomePage() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const [particles, setParticles] = useState<Particle[]>([]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (heroRef.current) {
-        const scrolled = window.scrollY;
-        heroRef.current.style.transform = `translateY(${scrolled * 0.1}px)`;
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -49,91 +27,66 @@ export default function HomePage() {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const generatedParticles = Array.from({ length: 30 }).map((_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      delay: `${Math.random() * 5}s`,
-      duration: `${8 + Math.random() * 4}s`,
-    }));
-    setParticles(generatedParticles);
-  }, []);
-
   return (
     <>
       <section
-        className="hero-premium relative min-h-[85vh] sm:min-h-[90vh] bg-stone-950 overflow-hidden flex items-center justify-center"
+        className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-[#f8f9fa] to-white px-4 md:px-[5%] py-16 md:py-24 overflow-hidden"
         aria-labelledby="hero-heading"
       >
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/banner/Banner-Facebook.webp"
-            alt="Banner de El Bosque que Calla, thriller histórico de Ramón del Pozo Rott"
-            fill
-            sizes="100vw"
-            className="object-cover opacity-20 sm:opacity-100 blur-md sm:blur-0 transition-all duration-500"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-stone-950 sm:bg-black/40" />
-        </div>
+        <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="text-center lg:text-left">
+            <div className="inline-block px-6 py-2.5 bg-[#c9a961]/10 border-l-4 border-[#c9a961] text-[#c9a961] text-[11px] font-bold tracking-[0.2em] uppercase mb-8">
+              Próximo lanzamiento
+            </div>
 
-        <div className="hero-particles z-10" aria-hidden="true">
-          {particles.map((particle) => (
-            <div
-              key={particle.id}
-              className="particle"
-              style={{
-                left: particle.left,
-                top: particle.top,
-                animationDelay: particle.delay,
-                animationDuration: particle.duration,
-              }}
-            />
-          ))}
-        </div>
-
-        <div
-          ref={heroRef}
-          className="relative w-full z-20 text-center max-w-5xl mx-auto px-4 flex flex-col items-center justify-center gap-6 sm:gap-8 will-change-transform"
-        >
-          <p className="fade-in-up text-premium-gold text-xs sm:text-sm font-bold tracking-[0.25em] uppercase" style={{ animationDelay: "0.1s" }}>
-            Ramón del Pozo Rott · Escritor español
-          </p>
-
-          <h1
-            id="hero-heading"
-            className="fade-in-up text-white font-bold drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] text-4xl sm:text-6xl md:text-7xl lg:text-8xl w-full"
-            style={{ animationDelay: "0.2s" }}
-          >
-            El Bosque que <span className="text-gradient-gold block sm:inline">Calla</span>
-          </h1>
-
-          <p className="fade-in-up text-stone-300 text-base sm:text-lg max-w-2xl mx-auto" style={{ animationDelay: "0.3s" }}>
-            Thriller histórico y suspense psicológico. Novelas de misterio, denuncia social y literatura infantil del autor Ramón del Pozo Rott.
-          </p>
-
-          <div
-            className="fade-in-up flex flex-col sm:flex-row gap-4 justify-center w-full max-w-xs sm:max-w-none"
-            style={{ animationDelay: "0.4s" }}
-          >
-            <Link href="/libros" className="btn-premium w-full sm:w-auto justify-center">
-              Descubre mis obras
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-            <a
-              href={BOOKIA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-premium btn-outline w-full sm:w-auto justify-center border-amber-500/50 text-amber-300 hover:text-amber-200"
+            <h1
+              id="hero-heading"
+              className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-[#1a1a1a] leading-[1.05] mb-6"
             >
-              Crear con {BOOKIA_NAME}
-            </a>
+              SEKOU
+              <span className="block text-[#c9a961] text-2xl sm:text-3xl md:text-[2rem] mt-4 font-medium italic">
+                Raíces de Libertad
+              </span>
+            </h1>
+
+            <p className="text-lg text-[#666666] leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
+              Una epopeya inolvidable sobre la esclavitud, el amor prohibido y la inquebrantable lucha por la
+              libertad. Inspirada en hechos reales que desafiaron el destino.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Link
+                href="/libros"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-gradient-to-br from-[#c9a961] to-[#d4b978] text-white text-xs font-semibold tracking-[0.15em] uppercase rounded shadow-[0_4px_15px_rgba(201,169,97,0.3)] hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(201,169,97,0.4)] transition-all"
+              >
+                Explorar novelas
+              </Link>
+              <a
+                href={AMAZON_AUTHOR_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-transparent text-[#1a1a1a] text-xs font-semibold tracking-[0.15em] uppercase rounded border-2 border-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white transition-all"
+              >
+                Ver autor en Amazon
+              </a>
+            </div>
+          </div>
+
+          <div className="flex justify-center lg:justify-end perspective-[1000px]">
+            <Image
+              src="/libros/sekou-portada.webp"
+              alt="Sekou: Raíces de Libertad — portada del próximo libro de Ramón del Pozo Rott"
+              width={420}
+              height={630}
+              priority
+              className="w-full max-w-[420px] rounded shadow-[20px_20px_60px_rgba(0,0,0,0.2)] transition-all duration-400 hover:-translate-y-3 hover:shadow-[0_40px_100px_rgba(0,0,0,0.3)]"
+              style={{ transform: "rotateY(-8deg)" }}
+            />
           </div>
         </div>
       </section>
+
+      <FeaturedBooksSection />
 
       <EcosystemBar />
 
@@ -210,28 +163,28 @@ export default function HomePage() {
               <div className="max-w-[300px] w-full">
                 <div className="relative w-full h-[480px] overflow-hidden bg-[#efecea] rounded-xl">
                   <Image
-                    src="/libros/el-bosque-que-calla.png"
-                    alt="Portada de El Bosque que Calla, thriller histórico de Ramón del Pozo Rott"
+                    src="/libros/sekou-portada.webp"
+                    alt="Portada de Sekou: Raíces de Libertad, novela histórica de Ramón del Pozo Rott"
                     fill
                     sizes="(max-width: 768px) 100vw, 300px"
                     className="object-cover"
                   />
                   <span className="absolute top-2 left-2 text-[0.58rem] font-bold uppercase tracking-[0.08em] px-2 py-0.5 rounded-full bg-white/90 text-[#e11d48] border border-[rgba(225,29,72,0.3)]">
-                    Thriller histórico
+                    Novela histórica
                   </span>
                 </div>
                 <div className="py-3.5 flex flex-col gap-0.5">
                   <p className="text-base font-extrabold text-[#1a1714] leading-tight uppercase tracking-[0.04em]">
-                    El bosque que calla
+                    Sekou: Raíces de Libertad
                   </p>
                   <p className="text-[0.72rem] text-[#7a7470] italic leading-tight">
-                    La verdad que nadie podía decir
+                    Resistencia y corazón
                   </p>
                   <p className="text-[0.75rem] text-[#b0a89f] leading-tight mt-0.5">
-                    Hubo un tiempo en que el mundo decidió no mirar. Jacobo y otros supervivientes guardan fragmentos de memoria rota.
+                    Una historia poderosa sobre la resistencia humana frente a la opresión, donde el amor se convierte en la única arma capaz de romper las cadenas.
                   </p>
                   <Link
-                    href="/libros/el-bosque-que-calla"
+                    href="/libros/sekou-raices-de-libertad"
                     className="inline-flex items-center gap-1.5 mt-2.5 px-3.5 py-1 rounded-full text-[0.68rem] font-bold tracking-[0.06em] uppercase no-underline border border-[rgba(225,29,72,0.4)] text-[#e11d48] bg-transparent hover:bg-[#e11d48]/10 transition-transform hover:scale-105 self-center"
                   >
                     Ver ficha del libro

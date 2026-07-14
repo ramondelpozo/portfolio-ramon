@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { BOOKIA_URL } from "@/lib/seo";
+import { AMAZON_AUTHOR_URL } from "@/lib/books";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -40,11 +42,17 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 nav-glass ${scrolled ? "scrolled" : ""}`}>
-      <div className="container-premium py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="text-xl md:text-2xl font-serif font-bold text-premium-charcoal hover:text-premium-gold transition-colors">
-            Ramón del Pozo <span className="text-premium-gold">Rott</span>
+      <div className="container-premium py-3 md:py-4">
+        <div className="flex items-center justify-between gap-4">
+          <Link href="/" className="flex items-center shrink-0" aria-label="Ramón del Pozo Rott — Inicio">
+            <Image
+              src="/brand/logo-sin-fondo.png"
+              alt="Ramón del Pozo Rott"
+              width={180}
+              height={70}
+              className="h-[55px] md:h-[70px] w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Menu */}
