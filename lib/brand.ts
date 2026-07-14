@@ -8,8 +8,8 @@ export const ECOSYSTEM = {
   authorUrl: SITE_URL,
   bookiaName: BOOKIA_NAME,
   bookiaUrl: BOOKIA_URL,
-  bookiaMeaning: "Libro + Inteligencia Artificial",
-  tagline: "Leer historias que importan. Escribir la tuya con BOOKIA.",
+  bookiaMeaning: "Editorial automatizada profesional",
+  tagline: "Leer historias que importan. Crear la tuya con BOOKIA Publisher.",
 } as const;
 
 export const BRAND_COLORS = {

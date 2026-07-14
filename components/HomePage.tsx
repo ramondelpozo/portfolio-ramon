@@ -6,8 +6,9 @@ import Image from "next/image";
 import AvailableBooksGrid from "@/components/AvailableBooksGrid";
 import ColeccionLiteraria from "@/components/ColeccionLiteraria";
 import EcosystemBar from "@/components/EcosystemBar";
+import BookiaPublisherSection from "@/components/BookiaPublisherSection";
 import { BOOKIA_URL } from "@/lib/seo";
-import { BOOKIA_NAME, ECOSYSTEM } from "@/lib/brand";
+import { BOOKIA_NAME } from "@/lib/brand";
 
 interface Particle {
   id: number;
@@ -136,103 +137,7 @@ export default function HomePage() {
 
       <EcosystemBar />
 
-      <section
-        id="bookia"
-        className="py-20 bg-gradient-to-b from-[#fcfbfa] via-white to-amber-50/40"
-        aria-labelledby="bookia-heading"
-      >
-        <div className="container-premium max-w-6xl mx-auto reveal-on-scroll">
-          <div className="text-center mb-10">
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <Image
-                src="/bookia/logo.png"
-                alt={BOOKIA_NAME}
-                width={48}
-                height={48}
-                className="rounded-lg border border-amber-500/30 shadow-sm"
-              />
-              <span className="text-xs font-black tracking-[0.25em] uppercase text-amber-600">
-                {BOOKIA_NAME}
-              </span>
-            </div>
-            <p className="text-sm text-slate-500 mb-4">{ECOSYSTEM.bookiaMeaning}</p>
-
-            <h2
-              id="bookia-heading"
-              className="font-serif text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight max-w-4xl mx-auto"
-            >
-              Tienes una historia dentro.{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-600">
-                {BOOKIA_NAME} la saca al mundo.
-              </span>
-            </h2>
-
-            <p className="text-lg text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              La misma visión literaria que impulsa mis novelas, ahora en una plataforma para autores:
-              del concepto al manuscrito, paso a paso.
-              <strong className="text-slate-900"> Sin experiencia previa. Sin complicaciones.</strong>
-            </p>
-          </div>
-
-          <div className="relative max-w-4xl mx-auto mb-12 rounded-3xl overflow-hidden border border-slate-900/10 shadow-2xl bg-slate-950 p-1.5">
-            <Image
-              src="/bookia/hero-all.png"
-              alt={`${BOOKIA_NAME} — plataforma para escribir y publicar tu libro, creada por Ramón del Pozo Rott`}
-              width={1200}
-              height={675}
-              className="w-full h-auto rounded-2xl"
-              priority
-            />
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-10 max-w-5xl mx-auto">
-            <article className="text-center p-6 bg-white rounded-xl border border-amber-200 shadow-sm">
-              <div className="text-4xl mb-3" aria-hidden="true">📜</div>
-              <h3 className="font-bold text-black mb-2">Prólogo</h3>
-              <p className="text-gray-600 text-sm">
-                Abre tu libro con una introducción que enganche al lector desde la primera página
-              </p>
-            </article>
-            <article className="text-center p-6 bg-white rounded-xl border border-amber-200 shadow-sm">
-              <div className="text-4xl mb-3" aria-hidden="true">✨</div>
-              <h3 className="font-bold text-black mb-2">Sinopsis</h3>
-              <p className="text-gray-600 text-sm">
-                Define la esencia de tu historia: personajes, conflicto y el tono que la hace única
-              </p>
-            </article>
-            <article className="text-center p-6 bg-white rounded-xl border border-amber-200 shadow-sm">
-              <div className="text-4xl mb-3" aria-hidden="true">📖</div>
-              <h3 className="font-bold text-black mb-2">3 capítulos gratis</h3>
-              <p className="text-gray-600 text-sm">
-                Empieza a escribir sin pagar nada: prueba el flujo completo antes de decidir
-              </p>
-            </article>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href={BOOKIA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold rounded-full hover:opacity-95 transition-all shadow-lg text-lg"
-            >
-              Empieza hoy →
-            </Link>
-            <Link
-              href={BOOKIA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-slate-900 text-slate-900 font-bold rounded-full hover:bg-slate-900 hover:text-white transition-all text-lg"
-            >
-              Ver cómo funciona
-            </Link>
-          </div>
-
-          <p className="text-center text-sm text-gray-600 mt-6">
-            Prólogo, sinopsis y 3 capítulos gratis &nbsp;•&nbsp; Sin experiencia previa &nbsp;•&nbsp; Empieza hoy
-          </p>
-        </div>
-      </section>
+      <BookiaPublisherSection />
 
       <AvailableBooksGrid />
 

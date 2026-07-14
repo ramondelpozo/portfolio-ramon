@@ -38,7 +38,7 @@ export default function EcosystemBar() {
             rel="noopener noreferrer"
             className="text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white hover:opacity-90 transition-opacity"
           >
-            Crear con BOOKIA →
+            Ir a BOOKIA Publisher →
           </Link>
         </div>
       </div>
